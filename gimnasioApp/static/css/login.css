@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1));
+    font-family: 'Times New Roman', Times, serif;
+    width: 40%;
+    max-width: 55rem;
+    margin: auto;
+    overflow: hidden;
+}
+
+.logo {
+    margin-top: 3rem;
+}
+
+main {
+    background: #fff;
+    border: 0.1rem solid burlywood;
+    margin-top: 3rem;
+}
+
+.title {
+    text-align: center;
+    color: cadetblue;
+    font-size: 4rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.titletwo {
+    text-align: center;
+    color: #423d3d;
+    font-size: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    /* display: grid;
+    grid-template-columns: 4fr auto; */
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    font-size: 3rem;
+    flex-wrap: wrap;
+    padding: 2.3rem;
+}
+
+input {
+    border: none;
+}
+
+.label {
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.inputs {
+    border-radius: .5rem;
+    border: .1rem solid burlywood;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: .5rem;
+}
+
+.input {
+    margin-left: -4.5rem;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: .5rem;
+    background: steelblue;
+    color: #fff;
+    font-size: 2rem;
+    margin: 1.4rem 0 3rem 0;
+    padding: .5rem;
+    text-align: center;
+    width: 13rem;
+}
+
+.btn:hover {
+    background: darkslategrey;
+    transform: scale(1.1);
+}
+
+.copy{
+    font-size: 2rem;
+    margin-top: 13rem;
+    
+}
+
+.redes_sociales{
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 11.5rem;
+    margin-bottom: 3rem;
+}

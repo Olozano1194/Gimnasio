@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--el fonticon-->
+    <link rel="short icon" href="{% static 'img/login.png' %}">
+
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href=" {% static 'css/login.css' %}">
+
+    <title>Login</title>
+
+</head>
+<body>
+    <header>
+        <img src="" alt="logoDesarrollador" class="logo">
+    </header>
+
+    <main>
+        <h1 class="title">"Nombre del Gym"</h1>
+        <div>
+            <h2 class="titletwo">Login</h2>
+
+            <form class="container" action="" method="POST">
+                {% csrf_token %}
+                {% if error  %}
+
+                <div class="errorViews">
+                    {{error}}
+                </div>
+            
+                {% endif %}
+
+                <label class="label" for="user">User:</label>
+                <input type="text" id="user" class="inputs users" name="user" placeholder="Escriba su Usuario">
+                <label class="label" for="password">Password:</label>
+                <input type="password" name="password" class="inputs input pass" id="password" placeholder="password">
+                <button class="btn">Iniciar</button>
+            </form>
+            
+        </div>
+    </main>
+    <footer>
+        <div class='container'>
+            <div class='copy'>
+                <p>&copy Creado por Oscar Lozano - 2023</p>
+            </div>
+            
+            
+            <div class='redes_sociales'>
+                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Olozano1194">
+                    
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

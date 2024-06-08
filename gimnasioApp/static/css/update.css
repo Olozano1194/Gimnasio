@@ -1,0 +1,53 @@
+.form-control {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-control input {
+    border: none;
+}
+
+input[type="text"],
+input[type="Date"]{
+    border: 2px solid #cecece;
+    border-radius: .5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    color: #3b3939;
+}
+
+/* .form-control.ok input {
+    
+    border: solid 1px #08ffc8;
+    border-color: 0 0 10px #08ffc8;
+} */
+
+.falla{
+    border: solid 1px red;
+    box-shadow: 0 0 10px red;
+
+}
+
+.error {
+    visibility: hidden;
+    position: absolute;
+    font-size: small;
+    font-weight: 500;
+    margin-top: -.5rem;
+    margin-left: 125px;
+    text-align: right;
+
+    visibility: visible; 
+    color: #e80c3c;
+    
+}
+
+.priceModifiado{
+    margin-top: .5rem;
+}
+
+
+.errorViews {
+    font-size: 2rem;
+    color: #e80c3c;
+}

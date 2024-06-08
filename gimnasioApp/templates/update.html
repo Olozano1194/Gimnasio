@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--el fonticon-->
+    <link rel="short icon" href="{% static 'img/update.png' %}">
+
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/update.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkin.css' %}">
+    
+
+    {% comment %} <link rel="stylesheet" href="./update.css">
+    <link rel="stylesheet" href="./loginBd/static/css/checkin.css"> {% endcomment %}
+
+
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+
+    <title>Update User</title>
+
+</head>
+<body>
+    
+    <h1 class="title">Update User</h1>
+
+    <main>
+        {% comment %} {% if error  %}
+
+        <div class="errorViews">
+            {{error}}
+        </div>
+        
+        {% endif %} {% endcomment %}
+        
+        <form method="POST" action=" {% url 'updateUsers' user.id %}" id="formUser">
+
+            {% csrf_token %}
+    
+            <div class="container-request">
+
+                <input type="hidden" name="id" value="{{user.id}}">
+                
+                <div class= "form-control">
+                    <label for="name" class="label">Name:</label>
+                    <input type="text" class="names" id="name" name="name" value="{{user.name}}" required maxlength="50">
+                    <p></p>
+                </div>
+
+                <div class="form-control">
+                    <label for="lastname" class="label">LastName:</label>
+                    <input type="text" class="lastnames" id="lastname" name="lastname" value="{{user.lastname}}" maxlength="50" required>
+                    <p></p>
+                </div>
+
+                <div class="form-control">
+                    <label for="phone" class="label">Phone:</label>
+                    <input type="text" class="phones" id="phone" name="phone" value="{{user.phone}}" maxlength="20" required>
+                    <p></p>
+                </div>
+
+                <div class="form-control">
+                    <label for="address" class="label">Address:</label>
+                    <input type="text" class="add" id="address" name="address" value="{{user.address}}" >
+                    <p></p>
+                </div>
+    
+                <div  class="form-control">
+                    <label for="dateInitial" class="label">Initial Date:</label>
+                    <input type="date" id="dateInitial" class="dateInit" name="dateInitial" value="{{user.dateInitial}}">
+                    <p></p>
+                </div>
+
+                <div class="form-control">
+                    <label for="dateFinal" class="label">Final Date:</label>
+                    <input type="date" id="dateFinal" class="dateFinal" name="dateFinal" value="{{user.dateFinal}}">
+                    <p></p>
+                </div>
+    
+            </div>
+    
+            <div class="container-btn">
+                
+                {% comment %} <input class='btnUpdate' type='submit' value='Update'> {% endcomment %}
+                <button type="submit" class='btnUpdate'><i class="fa-solid fa-floppy-disk"></i> Update</button>
+
+            </div>
+        </form>
+    </main>
+    
+    <footer>
+        <div class='container'>
+            <div class='copy'>
+                <p>&copy Creado por Oscar Lozano - 2023</p>
+            </div>
+            
+            
+            <div class='redes_sociales'>
+                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Olozano1194">
+                    
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+        
+    </footer>
+    <script src="{% static 'js/update.js' %}"></script>
+    {% comment %} <script src="./loginBd/static/js/update.js"></script> {% endcomment %}
+</body>
+</html>

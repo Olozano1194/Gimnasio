@@ -1,0 +1,250 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--el fonticon-->
+    <link rel="short icon" href="{% static 'img/home.png' %}">
+
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+    
+    <!--Datatable-->
+    <link href='https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css' rel='stylesheet'>
+
+    
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    <!--Person Css-->
+    <link type='text/css' rel="stylesheet" href="{% static 'css/welcome.css' %}">
+    
+    <title>Welcome</title>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/welcome">
+                <img src=" {% static 'img/logoGym.png' %}" width='80'alt="Icon del gym"></img>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+
+                    <a class="nav-link active" aria-current="page" href="/welcome">Home</a>
+                        
+                    {% if user.is_authenticated %}
+                        {% if request.session.user_roles == 'admin' %}
+                            <a class="nav-link active" href="/checkinGym">Register UserGym</a>
+                            <a class="nav-link active" href="/checkinDay">Register User</a>
+                            <a class="nav-link active" href="/checkin">Register Login</a>
+                        {% else %}
+                            <a class="nav-link active" href="/checkinGym">Register UserGym</a>
+                            <a class="nav-link active" href="/checkinDay">Register User</a>         
+                        {% endif %}    
+
+                    {% endif %}
+                        
+                    <a class="nav-link active" href="#">Contact</a>
+                    <a class="nav-link active" href="/logout">Sign off</a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section class="bienvenida">
+            <div class="contenedor-bienvenida">
+                <h1>Bienvenido/a, {{ request.session.user_name }}</a></h1>
+                <p>¡Gracias por ingresar en nuestro sitio! Esperamos que disfrutes de todas nuestras funcionalidades.</p>
+                
+            </div>
+        
+        </section>
+
+        <div class="container py-4">
+            <div class="row">
+                <!-- <div class="col-md-4">
+
+                </div> -->
+                <div class="col-md-12 tablas">
+                    <h2 class="title">Listado de Usuarios Mensualidad</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="dataTableGym">
+                            <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th class="center">Name</th>
+                                    <th class="center">Lastname</th>
+                                    <th class="center">Phone</th>
+                                    <th class="center">Addres</th>
+                                    <th class="center">Start Date</th>
+                                    <th class="center">Final Date</th>
+                                    <th class="center" colspan='2'>Options</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="tableBodyGym">
+                                
+                                {% for u in userGym %}
+                                <tr>
+                                    <td>
+                                        {{forloop.counter}}
+                                    </td>
+                                    <td>
+                                        {{u.name}}
+                                    </td>
+                
+                                    <td>
+                                        {{u.lastname}}
+                                    </td>
+                
+                                    <td>
+                                        {{u.phone}}
+                                    </td>
+                
+                                    <td>
+                                        {{u.address}}
+                                    </td>
+
+                                    <td>
+                                        {{u.dateInitial}}
+                                    </td>
+
+                                    <td>
+                                        {{u.dateFinal}}
+                                    </td>
+
+                                    <td>
+                                        <a href="{% url 'update' u.id %}" class='btn btn-sm btn-block btn-info'><i class="fa-solid fa-pencil"></i> Update</a>
+                                        <a href="{%  url 'delete' u.id %}" class='btn btn-sm btn-block btn-danger btnDelete'><i class="fa-regular fa-trash-can"></i> Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %} 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-4">
+            <div class="row">
+                <!-- <div class="col-md-4">
+
+                </div> -->
+                <div class="col-md-12 tablas">
+                    <h2 class="title">Listado de Usuarios Dia</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="dataTableGymDay">
+                            <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th class="center">Name</th>
+                                    <th class="center">Lastname</th>
+                                    <th class="center">Phone</th>
+                                    <th class="center">Start Date</th>
+                                    <th class="center">Price</th>
+                                    <th class="center" colspan='2'>Options</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="tableBodyGym">
+                                
+                                {% for user in userDay %}
+                                <tr>
+                                    <td>
+                                        {{forloop.counter}}
+                                    </td>
+                                    <td>
+                                        {{user.name}}
+                                    </td>
+                
+                                    <td>
+                                        {{user.lastname}}
+                                    </td>
+                
+                                    <td>
+                                        {{user.phone}}
+                                    </td>
+                
+                                    <td>
+                                        {{user.dateInitial}}
+                                    </td>
+
+                                    <td>
+                                        {{user.price}}
+                                    </td>
+
+                                    <td>
+                                        <a href="{% url 'updateDay' user.id %}" class='btn btn-sm btn-block btn-info'><i class="fa-solid fa-pencil"></i> Update</a>
+                                        <a href="{%  url 'deleteDay' user.id %}" class='btn btn-sm btn-block btn-danger btnDelete'><i class="fa-regular fa-trash-can"></i> Delete</a>
+                                    </td>
+                                </tr>
+                                
+                                {% endfor %}
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td>Total:</td>
+                                    <td>{{ total_price }}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class='container'>
+            <div class='copy'>
+                <p>&copy Creado por Oscar Lozano - 2023</p>
+            </div>
+            
+            
+            <div class='redes_sociales'>
+                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Olozano1194">
+                    
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+        
+       
+    </footer>
+
+    <!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+
+<!--Jquery-->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+<!--Datatable-->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<!--Person Js-->
+<script src="{% static 'js/welcome.js' %}"></script>
+<script src="{% static 'js/gestionUser.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+   padding: 0;
+   border: 0;
+   box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    
+}
+
+body {
+    background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 90%; 
+    max-width: 1000px; 
+    margin: auto;
+    overflow: hidden;
+    
+    
+}
+
+main {
+    background: white;
+    border: 0.1rem solid burlywood;
+}
+
+.title {
+    text-align: center;
+    color: cadetblue;
+    font-size: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.container-request{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-size: 3rem;
+    flex-wrap: wrap;
+    padding: 5rem;
+}
+
+.errorViews {
+    font-size: 2rem;
+    color: #e80c3c;
+}
+
+.label {
+    font-weight: 700;
+    padding: .5rem;
+    
+}
+
+.names, .lastnames, .phones, .address, .initDate, .finDate{
+    border-radius: .5rem;
+    border: 0.1rem solid burlywood;
+    font-size: 2rem;
+    margin: 1.4rem;
+    padding: .5rem;
+    
+}
+
+.container-btn button[type="submit"]{
+    background: rgb(67, 102, 199);
+    color: #fff;
+    border-radius: 1rem ;
+    margin: 3rem 0 4rem 40rem;
+    font-size: 3rem;
+    flex-wrap: wrap;
+    padding: 1.3rem;
+    cursor: pointer;
+    
+}
+
+.container-btn button[type="submit"]:hover{
+    background: #031669;
+    transform: scale(1.1);
+}
+
+/*footer*/
+
+.copy{
+    font-size: 2rem;
+    margin-top: 10rem;
+    
+}
+
+.redes_sociales{
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    font-size: 3rem;
+    margin-top: -3rem;
+    margin-bottom: 3rem;
+}

@@ -1,0 +1,94 @@
+/* Person Css */
+
+main {
+    background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1));
+    min-height: 450px;
+}
+
+/*sección bienvenida*/
+.bienvenida {
+    margin-top: 2rem;
+    margin-left: 85px;
+}
+
+
+/*sección tablas*/
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.center {
+    text-align: center !important;
+    vertical-align: middle !important;
+    /* font-size: 1.05rem ; */
+}
+
+/* arreglo del navbar del bootstrap*/
+
+.navbar {
+    padding: 2rem;
+    margin-left: 4rem;
+}
+
+.collapse {
+    font-size: 1.1rem;
+    margin-left: 4rem;
+}
+
+.navbar-collapse {
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.btn {
+    margin-right: 30px;
+    
+}
+
+/*Tablas*/
+
+.tablas {
+    max-width: 1190px;
+}
+
+/* Footer */
+.copy{
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    
+}
+
+.redes_sociales{
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: -5rem;
+    margin-left: 6rem;
+    margin-bottom: 3rem;
+}
+
+/*Responsive*/
+
+@media screen and (max-width: 927px){
+    .collapse {
+        font-size: 1rem;
+    }
+    
+}
+
+@media screen and (max-width: 878px){
+    .collapse {
+        font-size: 0.9rem;
+    }
+    
+}
+
+@media screen and (max-width: 817px){
+    .collapse {
+        font-size: 0.89rem;
+    }
+    
+}

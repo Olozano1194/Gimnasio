@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--el fonticon-->
+    <link rel="short icon" href="{% static 'img/lista-de-verificacion.png' %}">
+
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinLogin.css' %}">
+
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+
+    
+    
+    <title>Check In</title>
+</head>
+<body>
+    
+    <h1 class="title">checkIn</h1>
+
+    <main>
+        {% if error  %}
+
+        <div class="errorViews">
+            {{error}}
+        </div>
+        
+        {% endif %}
+
+        <form method="POST" action="">
+
+            {% csrf_token %}
+    
+            <div class="container-request">
+                
+                <div>
+                    <label for="name" class="label">Name:</label>
+                    <input type="text" class="names" id="name" name="name" placeholder="Name" required>
+                </div>
+
+
+                <div>
+                    <label for="lastname" class="label">LastName:</label>
+                    <input type="text" class="lastnames" id="lastname" name="lastname" placeholder="LastName" required>
+                </div>
+
+                <div>
+                    <label for="user" class="label">User:</label>
+                    <input type="text" class="users" id="user" name="user" placeholder="User" required>
+                </div>
+
+                <div>
+                    <label for="email" class="label">Email:</label>
+                    <input type="email" class="emails" id="email" name="email" placeholder="Email..." required>
+                </div>
+
+                <div >
+                    <label for="roles" class="label">Rol:</label>
+                    <select name="roles" class="rol" required>
+                        <option value="usuario">Usuario Normal</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+    
+                <div >
+                    <label for="password" class="label">Password:</label>
+                    <input type="password" id="password" class="pass" name="password" placeholder="Password" required>
+                </div>
+
+                <div>
+                    <label for="repeatpassword" class="label">Repeat Password:</label>
+                    <input type="password" id="repeatpassword" class="repeatpass" name="repeatpassword" placeholder="Repeat Password" required>
+                </div>
+    
+            </div>
+    
+            <div class="container-btn">
+                
+                <!--<input class='btnEnviar' type='submit' value='Registrar'>-->
+                <button type="submit" class='btnUpdate'><i class="fa-solid fa-floppy-disk"></i> Register</button>
+
+            </div>
+        </form>
+    </main>
+    
+    <footer>
+        <div class='container'>
+            <div class='copy'>
+                <p>&copy Creado por Oscar Lozano - 2023</p>
+            </div>
+            
+            
+            <div class='redes_sociales'>
+                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Olozano1194">
+                    
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+        
+    </footer>
+    
+</body>
+</html>
