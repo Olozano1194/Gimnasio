@@ -1,0 +1,26 @@
+/* header */
+header {
+    padding-left: 5rem;
+}
+
+header .logo {
+    width: 100px;
+    max-width: 110px;
+    height: 80%;
+    
+}
+/* main */
+main {
+    width: 600px;
+    max-width: 620px;
+}
+/* main form */
+main form .containerForm .label {
+    font-size: 2.5rem;
+}
+
+main form .containerForm .inputs {
+    font-size: 2.5rem;
+    padding: 1rem;
+    outline: none;    
+}

@@ -1,0 +1,61 @@
+/* header */
+header {
+    padding-top: 4rem;
+    @media (min-width: 1000px){
+        padding-top: 0rem;
+    }
+}
+
+header .logo {
+    width: 60px;
+    @media(min-width: 1000px) {
+        max-width: 70px;
+    }
+}
+
+/* formulario */
+main {
+    @media (min-width: 1000px) {
+    width: 60%;
+    }
+}
+
+main form .titletwo {
+    font-size: 3rem;
+}
+
+main form .errorViews {
+    font-size: 1.8rem;
+}
+
+main form .containerForm {
+    margin-bottom: 1rem;
+    
+}
+
+main form .containerForm .label {
+    font-size: 2.3rem;
+}
+
+main form .containerForm .inputs {
+    font-size: 2.1rem;
+    
+}
+
+/* btn */
+main form .btn {    
+    font-size: 2.2rem;
+    padding: 1rem;
+    width: 17rem;
+}
+
+/* Footer */
+footer {
+    padding-bottom: 4rem;
+    
+}
+
+footer .copy{
+    font-size: 2rem;
+    
+}

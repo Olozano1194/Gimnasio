@@ -11,57 +11,62 @@
     <!--Font Awesome-->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href=" {% static 'css/login.css' %}">
+    <!-- Style -->
+    <link rel="stylesheet" href=" {% static 'css/login/mobile.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/login/tablet.css' %}" media="(min-width: 800px)">
+    <link rel="stylesheet" href=" {% static 'css/login/desktop.css' %}" media="(min-width: 1024px)">
+
+
 
     <title>Login</title>
 
 </head>
 <body>
     <header>
-        <img src="" alt="logoDesarrollador" class="logo">
+        <img src="{% static 'img/logoOscar1.jpeg' %}" alt="logoDesarrollador" class="logo">
     </header>
 
     <main>
         <h1 class="title">"Nombre del Gym"</h1>
-        <div>
+        
+        <form action="" method="POST">
             <h2 class="titletwo">Login</h2>
 
-            <form class="container" action="" method="POST">
-                {% csrf_token %}
-                {% if error  %}
+            {% csrf_token %}
+            {% if error  %}
 
-                <div class="errorViews">
-                    {{error}}
-                </div>
+            <div class="errorViews">
+                {{error}}
+            </div>
             
-                {% endif %}
-
-                <label class="label" for="user">User:</label>
-                <input type="text" id="user" class="inputs users" name="user" placeholder="Escriba su Usuario">
+            {% endif %}
+            <div class="containerForm">
+                <label class="label users" for="user">User:</label>
+                <input type="text" id="user" class="inputs " name="user" placeholder="Write the User">
+            </div>
+            <div class="containerForm">
                 <label class="label" for="password">Password:</label>
-                <input type="password" name="password" class="inputs input pass" id="password" placeholder="password">
-                <button class="btn">Iniciar</button>
-            </form>
-            
-        </div>
+                <input type="password" name="password" class="inputs pass" id="password" placeholder="Write the Password">
+            </div>
+            <button class="btn">Iniciar</button>
+        </form>
     </main>
     <footer>
-        <div class='container'>
-            <div class='copy'>
-                <p>&copy Creado por Oscar Lozano - 2023</p>
-            </div>
-            
-            
-            <div class='redes_sociales'>
-                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/Olozano1194">
-                    
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
+        <div class='copy'>
+            <p>&copy 2024 Desarrollado por Oscar Lozano</p>
         </div>
+            
+            
+        <div class='redes_sociales'>
+            <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                <i class="fa-brands fa-linkedin linkedin"></i>
+            </a>
+            <a href="https://github.com/Olozano1194">
+                    
+                <i class="fa-brands fa-github github"></i>
+            </a>
+        </div>
+        
     </footer>
 </body>
 </html>

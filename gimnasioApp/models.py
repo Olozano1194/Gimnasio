@@ -22,6 +22,11 @@ class RegistrarUsuario(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = 'RegistrarUsuario'
+        verbose_name_plural = 'RegistrarUsuarios'
+        db_table = 'RegistrarUsuario'
 
 class RegistrarUsuarioGym(models.Model):
     name = models.CharField(max_length=100)
@@ -35,6 +40,11 @@ class RegistrarUsuarioGym(models.Model):
     def __str__(self):
         return self.name
     
+    class Meta:
+        verbose_name = 'RegistrarUsuarioGym'
+        verbose_name_plural = 'RegistrarUsuarioGyms'
+        db_table = 'RegistrarUsuarioGym'
+    
 class RegistrarUsuarioGymDay(models.Model):
     name = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
@@ -45,5 +55,10 @@ class RegistrarUsuarioGymDay(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = 'RegistrarUsuarioGymDay'
+        verbose_name_plural = 'RegistrarUsuarioGymDays'
+        db_table = 'RegistrarUsuarioGymDay'
     
 
