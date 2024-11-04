@@ -1,38 +1,41 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from . forms import UsuarioForm, UsuarioFormGym, UsuarioFormGymDay
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from django.db import IntegrityError
 from .models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay
 from django.contrib.auth.decorators import login_required
-# from django.http.response import JsonResponse
 
 from datetime import datetime
 
 import bcrypt  #esto nos sirve para encriptar la contraseña...ojo debemos instalarla pip install bcrypt 
-# from django.http import HttpResponse
 
 # Create your views here.
-
 #Esta parte es la vista de los usuarios que se loguean
 def Login(request):
     if request.method == 'GET':
         return render(request, 'login.html')
     
     else:
-        user = authenticate(request, username=request.POST['user'], password=request.POST['password'])
+        user = request.POST['user'] 
+        password=request.POST['password']
 
-        if user is None:
-            return render(request, 'login.html', { 'error': 'Username or password in incorrect'})
-        
-        else:
-            login(request, user)
+        try:
             user_profile = RegistrarUsuario.objects.get(user=user)
+        except RegistrarUsuario.DoesNotExist:
+            return render(request, 'login.html', {'error': 'Username or password is incorrect'})
+        
+        #Verificamos la contraseña
+        if bcrypt.checkpw(password.encode('utf-8'), user_profile.password.encode('utf-8')):
+            #Guardamos la información en la sesión 
             request.session['user_name'] = f'{user_profile.name} {user_profile.lastname}'
             request.session['user_roles'] = f'{user_profile.roles}'
-            return redirect('welcome')
+            return redirect('welcome')        
+        else:
+            return render(request, 'login.html', {'error': 'Username or password is incorrect'})
+            
 
-@login_required
+# @login_required
 def registerBd(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -42,19 +45,19 @@ def registerBd(request):
             hashed_password= bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
             usuario = form.save(commit=False)
-            usuario.password= hashed_password
+            usuario.password= hashed_password.decode('utf-8') #Guardamos la contra como un string
             usuario.save()
-            # form.save()
+            return redirect('login')
     else:
         form = UsuarioForm()
-    return render(request, 'checkIn.html')
+    return render(request, 'checkIn.html', {'form': form})
 
 @login_required
 def singoff(request):
     logout(request)
     return redirect('login')
 
-@login_required
+#@login_required
 def formcheckin(request):
     if request.method == 'GET':
         return render(request, 'checkInLogin.html')
@@ -98,12 +101,6 @@ def formcheckinGym(request):
           return redirect('welcome')
         
     return render(request, 'checkInGym.html', { 'error': 'Usuario ya existe'})
-
-
-# def list_Gym(request):
-#     gym = list(RegistrarUsuarioGym.objects.values())
-#     data = {'gym': gym}
-#     return JsonResponse(data)
 
 @login_required
 def delete_user(request,id):
