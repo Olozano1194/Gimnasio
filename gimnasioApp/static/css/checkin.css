@@ -11,17 +11,17 @@ html {
 }
 
 body {
+    width: 100%; 
     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 90%; 
-    max-width: 1000px; 
-    margin: auto;
-    overflow: hidden;
-    
-    
 }
 
 main {
+    background-color: red;
+}
+
+/* main {
+    width: 100%;
     background: white;
     border: 0.1rem solid burlywood;
 }
@@ -81,7 +81,7 @@ main {
 
 /*footer*/
 
-.copy{
+/* .copy{
     font-size: 2rem;
     margin-top: 10rem;
     
@@ -94,4 +94,4 @@ main {
     font-size: 3rem;
     margin-top: -3rem;
     margin-bottom: 3rem;
-}
+}  */
