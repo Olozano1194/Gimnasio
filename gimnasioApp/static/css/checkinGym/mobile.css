@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+ }
+ 
+ html {
+     font-size: 62.5%;    
+ }
+ 
+ header {
+     width: 100%;
+     height: 20vh;
+     text-align: center;
+     padding-bottom: 2rem;
+ }
+ 
+ header .title {
+     text-align: center;
+     color: cadetblue;
+     font-size: 5rem;
+     padding-top: 2rem;
+     padding-bottom: 2rem;
+ }
+ 
+ body {
+     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column; 
+ }
+ 
+ main {
+     width: 90%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: white;
+     border: 0.1rem solid burlywood;
+     border-radius: 1rem;
+     margin-top: 2rem;
+ }
+ 
+ main form {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding: 2rem;
+ }
+ 
+ main form .errorViews {
+     font-size: 2rem;
+     color: #e80c3c;
+ }
+ 
+ main form .container-request{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 2.2rem;
+     flex-direction: column;
+     
+ }
+ 
+ main form .container-request .container-LabelInput {
+     width: 100%;
+     display: flex;
+     justify-content: space-evenly;
+ }
+ 
+ main form .container-request .container-LabelInput .label {
+     width: 100%;
+     font-weight: 700;
+     padding: .5rem;
+     
+ }
+ 
+ .names, .lastnames, .phones, .address, .initDate, .finDate, .repeatpass {
+     width: 100%;
+     border-radius: .5rem;
+     border: 0.1rem solid burlywood;
+     font-size: 1.5rem;
+     margin: 1.4rem;
+     padding: .5rem;
+     
+ }
+ 
+ main form .container-btn {
+     width: 100%;
+     height: 5rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-top: 2rem;
+ }
+ 
+ main form .container-btn button[type="submit"]{
+     width: 50%;
+     background: rgb(67, 102, 199);
+     color: #fff;
+     border-radius: 1rem;
+     font-size: 1.5rem;
+     font-weight: 600;
+     cursor: pointer;
+     padding: 1.5rem;
+     
+ }
+ 
+ main form .container-btn button[type="submit"]:hover{
+     background: #031669;
+     transform: scale(1.1);
+ }
+ 
+ /*footer*/
+ footer {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 2rem;
+     padding-top: 2rem;
+     padding-bottom: 2rem;
+     
+ }
+ 
+ footer .copy{
+     font-size: 1.7rem;
+     font-weight: 600;
+ }
+ 
+ footer .redes_sociales{
+     display: flex;
+     font-size: 3rem;
+     justify-content: center;
+     align-items: center;
+     gap: 1.5rem;    
+ }
+ 
+ footer .redes_sociales .linkedin {
+     color: #0e76a8;
+ }
+ 
+ footer .redes_sociales .linkedin:hover {
+     color: #10648b;
+     transform: scale(1.1);
+ }
+ 
+ footer .redes_sociales .github {
+     color: #171515;
+ }
+ 
+ footer .redes_sociales .github:hover {
+     color: #272323;
+     transform: scale(1.1);
+ }
+ 
+ @media(min-width: 600px) {
+      /* main */
+      main {
+         width: 70%;
+     }
+     
+ }

@@ -1,0 +1,25 @@
+header .title {
+    font-size: 6rem;
+}
+
+/* main */
+main {
+    max-width: 800px;
+}
+main form .container-request{
+    font-size: 3rem;
+       
+}
+
+.names, .lastnames, .users, .emails, .rol, .pass, .repeatpass {
+    font-size: 2.2rem;
+}
+
+main form .container-btn button[type="submit"]{
+    font-size: 2.2rem;    
+}
+
+/* footer */
+footer .copy{
+    font-size: 2.5rem;
+}

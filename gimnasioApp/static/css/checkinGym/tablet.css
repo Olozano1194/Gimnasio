@@ -1,0 +1,27 @@
+header {
+    padding-bottom: 0rem;
+}
+
+/* main */
+main {
+    margin-top: 0;
+    padding-bottom: 2rem;
+}
+
+main form .container-request{
+    font-size: 2.5rem;
+       
+}
+
+.names, .lastnames, .users, .emails, .rol, .pass, .repeatpass {
+    font-size: 1.8rem;
+}
+
+main form .container-btn button[type="submit"]{
+    font-size: 2rem;    
+}
+
+/* footer */
+footer .copy{
+    font-size: 2.2rem;
+}
