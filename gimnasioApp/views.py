@@ -14,7 +14,7 @@ import bcrypt  #esto nos sirve para encriptar la contraseña...ojo debemos insta
 #Esta parte es la vista de los usuarios que se loguean
 def Login(request):
     if request.method == 'GET':
-        return render(request, 'login.html')
+        return render(request, 'login/login.html')
     
     else:
         user = request.POST['user'] 
@@ -23,7 +23,7 @@ def Login(request):
         try:
             user_profile = RegistrarUsuario.objects.get(user=user)
         except RegistrarUsuario.DoesNotExist:
-            return render(request, 'login.html', {'error': 'Username or password is incorrect'})
+            return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
         
         #Verificamos la contraseña
         if bcrypt.checkpw(password.encode('utf-8'), user_profile.password.encode('utf-8')):
@@ -32,7 +32,7 @@ def Login(request):
             request.session['user_roles'] = f'{user_profile.roles}'
             return redirect('welcome')        
         else:
-            return render(request, 'login.html', {'error': 'Username or password is incorrect'})
+            return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
             
 
 # @login_required
@@ -60,7 +60,7 @@ def singoff(request):
 #@login_required
 def formcheckin(request):
     if request.method == 'GET':
-        return render(request, 'checkInLogin.html')
+        return render(request, 'login/checkInLogin.html')
     
     else:
         if request.POST['password'] == request.POST['repeatpassword']:
@@ -72,12 +72,12 @@ def formcheckin(request):
                 return redirect('login')
 
             except IntegrityError:
-                render(request, 'checkInLogin.html', { 'error': 'Usuario ya existe'}) 
+                render(request, 'login/checkInLogin.html', { 'error': 'Usuario ya existe'}) 
         # return render(request, 'checkIn.html', { 'error': 'Error en el formulario'})
         
-        return render(request, 'checkInLogin.html', { 'error': 'Password do not match'})    
+        return render(request, 'login/checkInLogin.html', { 'error': 'Password do not match'})    
 
-@login_required
+#@login_required
 def home(request):
     UserList = RegistrarUsuarioGym.objects.all()
     User = RegistrarUsuarioGymDay.objects.all()
@@ -88,8 +88,7 @@ def home(request):
 
 
 #Esta parte es la vista de los usuarios del gym
-
-@login_required
+#@login_required
 def formcheckinGym(request):
     if request.method == 'GET':
         return render(request, 'checkInGym.html')
@@ -102,7 +101,7 @@ def formcheckinGym(request):
         
     return render(request, 'checkInGym.html', { 'error': 'Usuario ya existe'})
 
-@login_required
+#@login_required
 def delete_user(request,id):
     usuarioGym= RegistrarUsuarioGym.objects.get(id=id)
     
@@ -110,7 +109,7 @@ def delete_user(request,id):
     
     return redirect('welcome')
 
-@login_required
+#@login_required
 def update_user(request, id):
     usuario= RegistrarUsuarioGym.objects.get(id=id)
     
@@ -124,7 +123,7 @@ def update_user(request, id):
 
     return render(request,'update.html', {'user': usuario})
 
-@login_required
+#@login_required
 def actualizar(request, id):
     
     if request.method == 'POST':
@@ -147,7 +146,7 @@ def actualizar(request, id):
 
 
 #Esta es la parte de los usuarios de dia de rutina
-@login_required
+#@login_required
 def formcheckinGymDay(request):
     if request.method == 'GET':
         return render(request, 'checkIn.html')
@@ -160,7 +159,7 @@ def formcheckinGymDay(request):
         
     return render(request, 'checkIn.html', { 'error': 'Usuario ya existe'})
 
-@login_required
+#@login_required
 def delete_userDay(request,id):
     usuarioGym= RegistrarUsuarioGymDay.objects.get(id=id)
     
@@ -168,7 +167,7 @@ def delete_userDay(request,id):
     
     return redirect('welcome')
 
-@login_required
+#@login_required
 def update_userDay(request, id):
     usuario= RegistrarUsuarioGymDay.objects.get(id=id)
     
@@ -178,7 +177,7 @@ def update_userDay(request, id):
 
     return render(request,'updateDay.html', {'userDay': usuario})
 
-@login_required
+#@login_required
 def actualizarDay(request, id):
     
     if request.method == 'POST':

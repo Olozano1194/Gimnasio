@@ -8,6 +8,16 @@
  html {
      font-size: 62.5%;    
  }
+
+ body {
+    background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
  
  header {
      width: 100%;
@@ -22,16 +32,6 @@
      font-size: 5rem;
      padding-top: 2rem;
      padding-bottom: 2rem;
- }
- 
- body {
-     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     width: 100%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column; 
  }
  
  main {

@@ -1,21 +1,24 @@
 /* Person Css */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1));
+
+}
 
 main {
-    background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1));
-    min-height: 450px;
+    width: 100%;
+    
 }
-
-/*sección bienvenida*/
-.bienvenida {
-    margin-top: 2rem;
-    margin-left: 85px;
-}
-
 
 /*sección tablas*/
 .title {
     text-align: center;
     margin-bottom: 30px;
+
 }
 
 .center {
@@ -25,7 +28,6 @@ main {
 }
 
 /* arreglo del navbar del bootstrap*/
-
 .navbar {
     padding: 2rem;
     margin-left: 4rem;
@@ -54,23 +56,76 @@ main {
 }
 
 /* Footer */
-.copy{
-    font-size: 1.5rem;
-    margin-top: 5rem;
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     
 }
 
-.redes_sociales{
+footer .copy{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+footer .redes_sociales{
     display: flex;
-    font-size: 3rem;
+    font-size: 30px;
     justify-content: center;
-    gap: 4rem;
-    margin-top: -5rem;
-    margin-left: 6rem;
-    margin-bottom: 3rem;
+    align-items: center;
+    gap: 1.5rem;    
+}
+
+footer .redes_sociales .linkedin {
+    color: #0e76a8;
+}
+
+footer .redes_sociales .linkedin:hover {
+    color: #10648b;
+    transform: scale(1.1);
+}
+
+footer .redes_sociales .github {
+    color: #171515;
+}
+
+footer .redes_sociales .github:hover {
+    color: #272323;
+    transform: scale(1.1);
 }
 
 /*Responsive*/
+@media (min-width: 400px) {
+    footer {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    footer .copy{
+        font-size: 14px;
+        
+    } 
+}
+
+@media (min-width: 700px) {
+    footer .copy{
+        font-size: 20px;
+    }
+
+    footer .redes_sociales{
+        font-size: 40px;               
+    }
+}
+
+@media (min-width: 900px) {
+    .bienvenida .contenedor-bienvenida p {
+        font-size: 25px !important;
+    }
+}
 
 @media screen and (max-width: 927px){
     .collapse {

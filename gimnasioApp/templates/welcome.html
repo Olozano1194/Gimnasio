@@ -14,10 +14,9 @@
     
     <!--Datatable-->
     <link href='https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css' rel='stylesheet'>
-
-    
+        
     <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
     <!--Person Css-->
     <link type='text/css' rel="stylesheet" href="{% static 'css/welcome.css' %}">
@@ -26,46 +25,55 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-md bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/welcome">
-                <img src=" {% static 'img/logoGym.png' %}" width='80'alt="Icon del gym"></img>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+    <header class="w-100">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary m-0">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/welcome">
+                    <img src=" {% static 'img/logoGym.png' %}" width='80' heigth="24" alt="Icon del gym" class="rounded-3"></img>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                <div class="collapse navbar-collapse m-0" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/welcome">Home</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            {% if request.session.user_roles == 'admin' %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/checkinGym">Register UserGym</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/checkinDay">Register User</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/checkin">Register Login</a>
+                                </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/checkinGym">Register UserGym</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/checkinDay">Register User</a>
+                            </li>         
+                            {% endif %}    
 
-                    <a class="nav-link active" aria-current="page" href="/welcome">Home</a>
-                        
-                    {% if user.is_authenticated %}
-                        {% if request.session.user_roles == 'admin' %}
-                            <a class="nav-link active" href="/checkinGym">Register UserGym</a>
-                            <a class="nav-link active" href="/checkinDay">Register User</a>
-                            <a class="nav-link active" href="/checkin">Register Login</a>
-                        {% else %}
-                            <a class="nav-link active" href="/checkinGym">Register UserGym</a>
-                            <a class="nav-link active" href="/checkinDay">Register User</a>         
-                        {% endif %}    
-
-                    {% endif %}
+                        {% endif %}
                         
                     <a class="nav-link active" href="#">Contact</a>
                     <a class="nav-link active" href="/logout">Sign off</a>
                     
                 </div>
             </div>
-        </div>
-    </nav>
-
-    
+        </nav>
+    </header>
     <main>
-        <section class="bienvenida">
+        <section class="bienvenida p-3">
             <div class="contenedor-bienvenida">
-                <h1>Bienvenido/a, {{ request.session.user_name }}</a></h1>
-                <p>¡Gracias por ingresar en nuestro sitio! Esperamos que disfrutes de todas nuestras funcionalidades.</p>
+                <h1 class="fs-1">Bienvenido/a, {{ request.session.user_name }}</a></h1>
+                <p class="fs-6 text-center">¡Gracias por ingresar en nuestro sitio! Esperamos que disfrutes de todas nuestras funcionalidades.</p>
                 
             </div>
         
@@ -73,13 +81,10 @@
 
         <div class="container py-4">
             <div class="row">
-                <!-- <div class="col-md-4">
-
-                </div> -->
-                <div class="col-md-12 tablas">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tablas">
                     <h2 class="title">Listado de Usuarios Mensualidad</h2>
                     <div class="table-responsive">
-                        <table class="table table-striped" id="dataTableGym">
+                        <table class="table table-striped display nowrap w-100" id="dataTableGym">
                             <thead>
                                 <tr>
                                     <th class="center">#</th>
@@ -140,7 +145,6 @@
         <div class="container py-4">
             <div class="row">
                 <!-- <div class="col-md-4">
-
                 </div> -->
                 <div class="col-md-12 tablas">
                     <h2 class="title">Listado de Usuarios Dia</h2>
@@ -201,40 +205,30 @@
                                     <td>{{ total_price }}</td>
                                 </tr>
                             </tfoot>
-                        </table>
-
-                        
+                        </table>                        
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
-
     <footer>
-        <div class='container'>
-            <div class='copy'>
-                <p>&copy Creado por Oscar Lozano - 2023</p>
-            </div>
-            
-            
-            <div class='redes_sociales'>
-                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/Olozano1194">
-                    
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
+        <div class='copy'>
+            <p class="p-copy m-0">&copy2024 Desarrollado por Oscar Lozano</p>
+         </div>
+                  
+        <div class='redes_sociales'>
+            <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                <i class="fa-brands fa-linkedin linkedin"></i>
+            </a>
+            <a href="https://github.com/Olozano1194">
+                <i class="fa-brands fa-github github"></i>
+            </a>
         </div>
-        
-       
     </footer>
 
     <!--Bootstrap-->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <!--Jquery-->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
