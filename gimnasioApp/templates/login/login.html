@@ -24,29 +24,27 @@
 <body>
     <header>
         <img src="{% static 'img/logoOscar1.jpeg' %}" alt="logoDesarrollador" class="logo">
+        <h1 class="title">Gym Cuerpo y Mente</h1>
     </header>
 
     <main>
-        <h1 class="title">"Nombre del Gym"</h1>
-        
         <form action="" method="POST">
-            <h2 class="titletwo">Login</h2>
-
             {% csrf_token %}
+            <h2 class="titletwo">Iniciar Sesión</h2>
+            
             {% if error  %}
-
             <div class="errorViews">
                 {{error}}
-            </div>
-            
+            </div>            
             {% endif %}
+
             <div class="containerForm">
-                <label class="label users" for="user">User:</label>
-                <input type="text" id="user" class="inputs " name="user" placeholder="Write the User">
+                <label class="label users" for="user">Usuario:</label>
+                <input type="text" id="user" class="inputs " name="user" placeholder="Escribe el usuario">
             </div>
             <div class="containerForm">
-                <label class="label" for="password">Password:</label>
-                <input type="password" name="password" class="inputs pass" id="password" placeholder="Write the Password">
+                <label class="label" for="password">Contraseña:</label>
+                <input type="password" name="password" class="inputs pass" id="password" placeholder="Escribe la contraseña">
             </div>
             <button class="btn">Iniciar</button>
         </form>
@@ -68,5 +66,6 @@
         </div>
         
     </footer>
+    
 </body>
 </html>
