@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . forms import UsuarioForm, UsuarioFormGym, UsuarioFormGymDay, RenovacionForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay, Renovacion
 from django.contrib.auth.decorators import login_required
@@ -21,16 +21,24 @@ def Login(request):
         user = request.POST['user'] 
         password=request.POST['password']
 
+        #autenticamos el usuario
+        user = authenticate(request, username=user, password=password)
+
+        if user is None:
+            # Si el usuario no se encuentra o la contraseña no es válida
+            return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
+        #Si el usuario existe, toca verificar la contraseña
         try:
             user_profile = RegistrarUsuario.objects.get(user=user)
         except RegistrarUsuario.DoesNotExist:
             return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
         
-        #Verificamos la contraseña
+        #Verificamos la contraseña manualmente
         if bcrypt.checkpw(password.encode('utf-8'), user_profile.password.encode('utf-8')):
-            #Guardamos la información en la sesión 
+            #Guardamos la información en la sesión si la contraseña es correcta
             request.session['user_name'] = f'{user_profile.name} {user_profile.lastname}'
-            request.session['user_roles'] = f'{user_profile.roles}'
+            request.session['user_roles'] = f'{user_profile.roles}' #se guarda el rol
+            login(request, user) #Usamos Django para iniciar sesión
             return redirect('welcome')        
         else:
             return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
@@ -158,9 +166,9 @@ def renovar_mensualidad(request, usuario_id=None):
 
         if fecha_renovacion and fecha_vencimiento:
             nueva_renovacion = Renovacion(
-                usuario=usuario,
-                fecha_renovacion=fecha_renovacion,
-                fecha_vencimiento=fecha_vencimiento
+                usuarioGym=usuario,
+                fechaRenovacion=fecha_renovacion,
+                fechaVencimiento=fecha_vencimiento
             )
             nueva_renovacion.save() #Guardamos la renovacion
 

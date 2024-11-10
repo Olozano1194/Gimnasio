@@ -70,4 +70,9 @@ class Renovacion(models.Model):
 
     def __str__(self):
          return f"Renovación de {self.usuario.name} del {self.fechaRenovacion} al {self.fechaVencimiento}"
+    
+    class Meta:
+        verbose_name = 'Renovacion'
+        verbose_name_plural = 'Renovaciones'
+        db_table = 'Renovacion'
 

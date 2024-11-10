@@ -44,7 +44,7 @@
 
                 <div class="container-LabelInput">
                     <label for="dateFinal" class="label">Final Date:</label>
-                    <input type="date" id="dateFinal" class="finDate" name="fechaVencimiento" required>
+                    <input type="date" id="dateFinal" class="finDate" name="fechaVencimiento" min="{{ today_date|date:'Y-m-d' }}" required>
                 </div>
             </div>
     
