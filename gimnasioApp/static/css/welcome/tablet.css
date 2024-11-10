@@ -1,0 +1,70 @@
+.bienvenida {
+    padding-left: 1.5rem !important;
+
+}
+
+/* Cards */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.col {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*Responsive*/
+@media (min-width: 400px) {
+    footer {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    footer .copy{
+        font-size: 14px;
+        
+    } 
+}
+
+@media (min-width: 700px) {
+    footer .copy{
+        font-size: 20px;
+    }
+
+    footer .redes_sociales{
+        font-size: 40px;               
+    }
+}
+
+@media (min-width: 900px) {
+    .bienvenida .contenedor-bienvenida p {
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width: 927px){
+    .collapse {
+        font-size: 1rem;
+    }
+    
+}
+
+@media screen and (max-width: 878px){
+    .collapse {
+        font-size: 0.9rem;
+    }
+    
+}
+
+@media screen and (max-width: 817px){
+    .collapse {
+        font-size: 0.89rem;
+    }
+    
+}

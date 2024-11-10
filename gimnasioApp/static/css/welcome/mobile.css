@@ -6,11 +6,11 @@
 body {
     width: 100%;
     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1));
-
 }
 
 main {
     width: 100%;
+    height: 90vh;
     
 }
 
@@ -49,6 +49,18 @@ main {
     
 }
 
+/* Cards */
+.col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+}
+
 /*Tablas*/
 
 .tablas {
@@ -68,7 +80,7 @@ footer {
 }
 
 footer .copy{
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -77,7 +89,7 @@ footer .redes_sociales{
     font-size: 30px;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;    
+    gap: 1rem;    
 }
 
 footer .redes_sociales .linkedin {
@@ -98,52 +110,13 @@ footer .redes_sociales .github:hover {
     transform: scale(1.1);
 }
 
-/*Responsive*/
-@media (min-width: 400px) {
-    footer {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    footer .copy{
-        font-size: 14px;
-        
-    } 
-}
-
-@media (min-width: 700px) {
-    footer .copy{
+@media (min-width: 600px) {
+    footer .copy {
         font-size: 20px;
     }
 
-    footer .redes_sociales{
-        font-size: 40px;               
+    footer .redes_sociales {
+        font-size: 35px;
     }
 }
 
-@media (min-width: 900px) {
-    .bienvenida .contenedor-bienvenida p {
-        font-size: 25px !important;
-    }
-}
-
-@media screen and (max-width: 927px){
-    .collapse {
-        font-size: 1rem;
-    }
-    
-}
-
-@media screen and (max-width: 878px){
-    .collapse {
-        font-size: 0.9rem;
-    }
-    
-}
-
-@media screen and (max-width: 817px){
-    .collapse {
-        font-size: 0.89rem;
-    }
-    
-}
