@@ -13,10 +13,11 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
 
     <!--Stile-->
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinGym/mobile.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinGym/tablet.css' %}" media="(min-width: 800px)">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinGym/desktop.css' %}" media="(min-width: 1024px)">
     <link type='text/css' rel="stylesheet" href="{% static 'css/update.css' %}">
-    <link type='text/css' rel="stylesheet" href="{% static 'css/checkin.css' %}">
     
-
     <!--Font Awesome-->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
 
@@ -24,8 +25,10 @@
 
 </head>
 <body>
+    <header>
+        <h1 class="title">checkIn</h1>
+    </header>
     <main>
-        <h1 class="title">Check In</h1>
         {% if error  %}
 
         <div class="errorViews">
@@ -40,38 +43,37 @@
     
             <div class="container-request">
 
-                <input type="hidden" name="id">
+                {% comment %} <input type="hidden" name="id"> {% endcomment %}
                 
-                <div class= "form-control">
+                <div class= "form-control container-LabelInput">
                     <label for="name" class="label">Name:</label>
-                    <input type="text" class="names" id="name" name="name" required maxlength="50">
+                    <input type="text" class="names" id="name" name="name" maxlength="50">
                     <p></p>
                 </div>
 
-                <div class="form-control">
+                <div class="form-control container-LabelInput">
                     <label for="lastname" class="label">LastName:</label>
-                    <input type="text" class="lastnames" id="lastname" name="lastname" maxlength="50" required>
+                    <input type="text" class="lastnames" id="lastname" name="lastname" maxlength="50">
                     <p></p>
                 </div>
 
-                <div class="form-control">
+                <div class="form-control container-LabelInput">
                     <label for="phone" class="label">Phone:</label>
-                    <input type="text" class="phones" id="phone" name="phone" maxlength="10" required>
+                    <input type="text" class="phones" id="phone" name="phone" maxlength="10" >
                     <p></p>
                 </div>
 
-                <div  class="form-control">
+                <div class="container-LabelInput">
                     <label for="dateInitial" class="label">Initial Date:</label>
-                    <input type="date" id="dateInitial" class="dateInit" name="dateInitial">
-                    <p></p>
+                    <input type="date" id="dateInitial" class="initDate" name="dateInitial" min="{{ today_date|date:'Y-m-d' }}" max="{{ today_date|date:'Y-m-d' }}" >
+                    <p></p>                    
                 </div>
 
-                <div class="form-control">
+                <div class="form-control container-LabelInput">
                     <label for="price" class="label">Price:</label>
                     <input type="text" id="price" class="prices" name="price" >
                     <p class="priceModifiado"></p>
-                </div>
-    
+                </div>    
             </div>
     
             <div class="container-btn">
@@ -84,25 +86,20 @@
     </main>
     
     <footer>
-        <div class='container'>
-            <div class='copy'>
-                <p>&copy Creado por Oscar Lozano - 2023</p>
-            </div>
-            
-            
-            <div class='redes_sociales'>
-                <a href="https://www.linkedin.com/in/OlozanoBocanegra">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/Olozano1194">
-                    
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
+        <div class='copy'>
+            <p>&copy Creado por Oscar Lozano - 2023</p>
+        </div>
+        <div class='redes_sociales'>
+            <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Olozano1194">
+                <i class="fa-brands fa-github"></i>
+            </a>
         </div>
         
     </footer>
-    {% comment %} <script src="{% static 'js/updateDay.js' %}"></script> {% endcomment %}
+    <script src="{% static 'js/updateDay.js' %}"></script>
     {% comment %} <script src="./loginBd/static/js/update.js"></script> {% endcomment %}
 </body>
 </html>

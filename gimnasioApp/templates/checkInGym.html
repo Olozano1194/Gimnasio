@@ -44,7 +44,6 @@
                     <input type="text" class="names" id="name" name="name" placeholder="Name" required>
                 </div>
 
-
                 <div class="container-LabelInput">
                     <label for="lastname" class="label">LastName:</label>
                     <input type="text" class="lastnames" id="lastname" name="lastname" placeholder="LastName" required>
@@ -62,7 +61,7 @@
 
                 <div class="container-LabelInput">
                     <label for="dateInitial" class="label">Initial Date:</label>
-                    <input type="date" id="dateInitial" class="initDate" name="dateInitial" required>
+                    <input type="date" id="dateInitial" class="initDate" name="dateInitial" min="{{ today_date|date:'Y-m-d' }}" required>
                 </div>
 
                 <div class="container-LabelInput">
@@ -79,8 +78,7 @@
 
             </div>
         </form>
-    </main>
-    
+    </main>    
     <footer>
         <div class='copy'>
             <p>&copy 2024 Desarrollado por Oscar Lozano</p>

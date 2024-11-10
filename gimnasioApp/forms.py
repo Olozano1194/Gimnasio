@@ -1,5 +1,5 @@
 from django import forms
-from . models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay
+from . models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay, Renovacion
 
 
 class UsuarioForm(forms.ModelForm):
@@ -41,3 +41,10 @@ class UsuarioFormGymDay(forms.ModelForm):
                 
         ]
 
+class RenovacionForm(forms.ModelForm):
+    class Meta:
+        model = Renovacion
+        fields = [
+            'fechaRenovacion',
+            'fechaVencimiento',
+        ]

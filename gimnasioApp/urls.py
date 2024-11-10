@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import formcheckin, Login, singoff, home, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay
+from .views import formcheckin, Login, singoff, home, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad
 
 
 
@@ -20,6 +20,7 @@ urlpatterns = [
     path('updateDay/<int:id>', update_userDay, name='updateDay'),
     path('updateUserDay/<int:id>', actualizarDay, name='updateUserDay'),
     path('deleteDay/<int:id>', delete_userDay, name='deleteDay'),
-    # path('listGym/', list_Gym, name='listGym'),
+    
+    path('renovarGym/<int:usuario_id>/', renovar_mensualidad, name='renovarGym'),
 
 ]

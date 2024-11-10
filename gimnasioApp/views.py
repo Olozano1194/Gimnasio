@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
-from . forms import UsuarioForm, UsuarioFormGym, UsuarioFormGymDay
+from django.shortcuts import render, redirect, get_object_or_404
+from . forms import UsuarioForm, UsuarioFormGym, UsuarioFormGymDay, RenovacionForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.db import IntegrityError
-from .models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay
+from .models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay, Renovacion
 from django.contrib.auth.decorators import login_required
 
-from datetime import datetime
+from datetime import datetime, date
+from django.utils import timezone
 
 import bcrypt  #esto nos sirve para encriptar la contraseña...ojo debemos instalarla pip install bcrypt 
 
@@ -33,7 +34,6 @@ def Login(request):
             return redirect('welcome')        
         else:
             return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
-            
 
 # @login_required
 def registerBd(request):
@@ -73,8 +73,7 @@ def formcheckin(request):
 
             except IntegrityError:
                 render(request, 'login/checkInLogin.html', { 'error': 'Usuario ya existe'}) 
-        # return render(request, 'checkIn.html', { 'error': 'Error en el formulario'})
-        
+                
         return render(request, 'login/checkInLogin.html', { 'error': 'Password do not match'})    
 
 #@login_required
@@ -83,23 +82,26 @@ def home(request):
     User = RegistrarUsuarioGymDay.objects.all()
 
     total_price = sum(user.price for user in User)
-    
+        
     return render(request, 'welcome.html', {'userGym': UserList, 'userDay': User, 'total_price': total_price})
-
 
 #Esta parte es la vista de los usuarios del gym
 #@login_required
 def formcheckinGym(request):
+    #Obtenemos la fecha actual
+    today_date = date.today() 
+
     if request.method == 'GET':
-        return render(request, 'checkInGym.html')
+        return render(request, 'checkInGym.html', { 'today_date': today_date})
     
     else:
         form = UsuarioFormGym(request.POST)
+
         if form.is_valid():
-          usuario = form.save()
+          usuario = form.save() #Guardamos el usuario si el formulario es valido
           return redirect('welcome')
         
-    return render(request, 'checkInGym.html', { 'error': 'Usuario ya existe'})
+    return render(request, 'checkInGym.html', { 'error': 'Usuario ya existe', 'today_date': today_date})
 
 #@login_required
 def delete_user(request,id):
@@ -144,12 +146,41 @@ def actualizar(request, id):
         usuario.save()
         return redirect('welcome')
 
+def renovar_mensualidad(request, usuario_id=None):
+    usuario = get_object_or_404(RegistrarUsuarioGym, id=usuario_id) #Obtenemos al usuario por su ID
+
+    today_date = timezone.now().date() #Obtenemos la fecha actual
+
+    if request.method == 'POST':
+        #Crear el formulario apartir de los datos POST
+        fecha_renovacion = request.POST.get('fechaRenovacion')
+        fecha_vencimiento = request.POST.get('fechaVencimiento')
+
+        if fecha_renovacion and fecha_vencimiento:
+            nueva_renovacion = Renovacion(
+                usuario=usuario,
+                fecha_renovacion=fecha_renovacion,
+                fecha_vencimiento=fecha_vencimiento
+            )
+            nueva_renovacion.save() #Guardamos la renovacion
+
+            return redirect('welcome')           
+        
+    else:
+        #Si es un GET, solo se muestra el form vacio 
+        form = RenovacionForm(initial={'fecha_inicio': date.today()})
+        return render(request, 'renovar_mensualidad.html', {
+            'usuario': usuario,
+            'today_date': today_date,
+        })
 
 #Esta es la parte de los usuarios de dia de rutina
 #@login_required
 def formcheckinGymDay(request):
+    #Obtenemos la fecha actual
+    today_date = date.today()
     if request.method == 'GET':
-        return render(request, 'checkIn.html')
+        return render(request, 'checkIn.html', { 'today_date': today_date })
     
     else:
         form = UsuarioFormGymDay(request.POST)
@@ -157,7 +188,7 @@ def formcheckinGymDay(request):
           usuario = form.save()
           return redirect('welcome')
         
-    return render(request, 'checkIn.html', { 'error': 'Usuario ya existe'})
+    return render(request, 'checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
 
 #@login_required
 def delete_userDay(request,id):
@@ -196,3 +227,9 @@ def actualizarDay(request, id):
         usuario.dateInitial = dateInitial        
         usuario.save()
         return redirect('welcome')
+
+#Historial de usuarios del gym
+# def perfil_usuario(request, usuario_id):
+#     usuario = get_object_or_404(RegistrarUsuarioGym, id=usuario_id)
+#     renovaciones = Renovacion.objects.filter(usuario=usuario).order_by('-fecha_inicio')
+#     return render(request, 'perfil_usuario.html', {'usuario': usuario, 'renovaciones': renovaciones})

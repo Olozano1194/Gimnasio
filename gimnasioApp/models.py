@@ -61,4 +61,13 @@ class RegistrarUsuarioGymDay(models.Model):
         verbose_name_plural = 'RegistrarUsuarioGymDays'
         db_table = 'RegistrarUsuarioGymDay'
     
+#Clase para la renovación de los usuarios del gimnasio
+class Renovacion(models.Model):
+    usuarioGym = models.ForeignKey(RegistrarUsuarioGym, on_delete=models.CASCADE, related_name="renovaciones")
+    fechaRenovacion = models.DateField()
+    fechaVencimiento = models.DateField()
+    es_renovado = models.BooleanField(default=False) # Marca si es una renovación o no
+
+    def __str__(self):
+         return f"Renovación de {self.usuario.name} del {self.fechaRenovacion} al {self.fechaVencimiento}"
 

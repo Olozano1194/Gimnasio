@@ -13,6 +13,7 @@
     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,9 +37,11 @@
  
  main {
      width: 90%;
+     height: 90vh;
      display: flex;
      justify-content: center;
      align-items: center;
+     flex-direction: column;
      background: white;
      border: 0.1rem solid burlywood;
      border-radius: 1rem;
@@ -64,7 +67,7 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     font-size: 2.2rem;
+     font-size: 2rem;
      flex-direction: column;
      
  }
@@ -72,6 +75,7 @@
  main form .container-request .container-LabelInput {
      width: 100%;
      display: flex;
+     align-items: center;
      justify-content: space-evenly;
  }
  
@@ -82,7 +86,7 @@
      
  }
  
- .names, .lastnames, .phones, .address, .initDate, .finDate, .repeatpass {
+ .names, .lastnames, .phones, .address, .initDate, .finDate, .repeatpass, .prices {
      width: 100%;
      border-radius: .5rem;
      border: 0.1rem solid burlywood;
@@ -160,6 +164,55 @@
      color: #272323;
      transform: scale(1.1);
  }
+
+ /* Errores */
+ .form-control {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-control input {
+    border: none;
+}
+
+input[type="text"],
+input[type="Date"] {
+    border: 2px solid #cecece;
+    border-radius: .5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    color: #3b3939;
+    outline: none;
+}
+
+.falla{
+    border: solid 1px red;
+    box-shadow: 0 0 10px red;
+}
+
+.error {
+    visibility: hidden;
+    position: absolute;
+    font-size: small;
+    font-weight: 500;
+    margin-left: 125px;
+    padding-top: 60px;
+    text-align: right;
+
+    visibility: visible; 
+    color: #e80c3c;
+    
+}
+
+.priceModifiado{
+    margin-top: .5rem;
+}
+
+
+.errorViews {
+    font-size: 2rem;
+    color: #e80c3c;
+}
  
  @media(min-width: 600px) {
       /* main */
