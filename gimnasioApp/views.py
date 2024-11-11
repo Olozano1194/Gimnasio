@@ -66,7 +66,7 @@ def singoff(request):
     return redirect('login')
 
 #@login_required
-def formcheckin(request):
+def formcheckinUser(request):
     if request.method == 'GET':
         return render(request, 'login/checkInLogin.html')
     
@@ -100,7 +100,7 @@ def formcheckinGym(request):
     today_date = date.today() 
 
     if request.method == 'GET':
-        return render(request, 'checkInGym.html', { 'today_date': today_date})
+        return render(request, 'registrarMiembros/checkInGym.html', { 'today_date': today_date})
     
     else:
         form = UsuarioFormGym(request.POST)
@@ -109,7 +109,7 @@ def formcheckinGym(request):
           usuario = form.save() #Guardamos el usuario si el formulario es valido
           return redirect('welcome')
         
-    return render(request, 'checkInGym.html', { 'error': 'Usuario ya existe', 'today_date': today_date})
+    return render(request, 'registrarMiembros/checkInGym.html', { 'error': 'Usuario ya existe', 'today_date': today_date})
 
 #@login_required
 def delete_user(request,id):
@@ -188,7 +188,7 @@ def formcheckinGymDay(request):
     #Obtenemos la fecha actual
     today_date = date.today()
     if request.method == 'GET':
-        return render(request, 'checkIn.html', { 'today_date': today_date })
+        return render(request, 'registrarDiarios/checkIn.html', { 'today_date': today_date })
     
     else:
         form = UsuarioFormGymDay(request.POST)
@@ -196,7 +196,7 @@ def formcheckinGymDay(request):
           usuario = form.save()
           return redirect('welcome')
         
-    return render(request, 'checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
+    return render(request, 'registrarDiarios/checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
 
 #@login_required
 def delete_userDay(request,id):

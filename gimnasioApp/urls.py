@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import formcheckin, Login, singoff, home, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad
+from .views import formcheckinUser, Login, singoff, home, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad
 
 
 
 urlpatterns = [
     path('', Login, name='login'),
-    path('checkin/', formcheckin, name='checkin'),
+    path('checkinUser/', formcheckinUser, name='checkinUser'),
     path('logout/', singoff, name='logout'),
     path('welcome/', home, name='welcome'),
 
