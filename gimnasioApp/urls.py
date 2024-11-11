@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import formcheckinUser, Login, singoff, home, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad
+from .views import formcheckinUser, Login, singoff, welcome, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad, listUser
 
 
 
@@ -7,7 +7,8 @@ urlpatterns = [
     path('', Login, name='login'),
     path('checkinUser/', formcheckinUser, name='checkinUser'),
     path('logout/', singoff, name='logout'),
-    path('welcome/', home, name='welcome'),
+    path('welcome/', welcome, name='welcome'),
+    path('listUser/', listUser, name='listUser'),
 
     path('update/<int:id>', update_user, name='update'),
     path('updateUsers/<int:id>', actualizar, name='updateUsers'),
