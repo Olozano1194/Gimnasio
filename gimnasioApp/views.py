@@ -85,13 +85,9 @@ def formcheckinUser(request):
         return render(request, 'login/checkInLogin.html', { 'error': 'Password do not match'})    
 
 #@login_required
-def home(request):
-    UserList = RegistrarUsuarioGym.objects.all()
-    User = RegistrarUsuarioGymDay.objects.all()
-
-    total_price = sum(user.price for user in User)
-        
-    return render(request, 'welcome.html', {'userGym': UserList, 'userDay': User, 'total_price': total_price})
+def welcome(request):
+    
+    return render(request, 'welcome.html')
 
 #Esta parte es la vista de los usuarios del gym
 #@login_required
@@ -197,6 +193,24 @@ def formcheckinGymDay(request):
           return redirect('welcome')
         
     return render(request, 'registrarDiarios/checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
+
+#@login_required
+def listUser(request):
+     # Obtener todos los usuarios
+    UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
+    UserDayList = RegistrarUsuarioGymDay.objects.all().order_by('-id')
+    
+    # Obtener el template a usar
+    template_type = request.GET.get('type', 'monthly')
+    
+    if template_type == 'monthly':
+        template_name = 'registrarMiembros/listUserGym.html'
+        context = {'userGym': UserGymList}
+    else:
+        template_name = 'registrarDiarios/listUserDay.html'
+        context = {'userGym': UserDayList}
+    
+    return render(request, template_name, context)
 
 #@login_required
 def delete_userDay(request,id):
