@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--el fonticon-->
+    <link rel="short icon" href="{% static 'img/lista-de-verificacion.png' %}">
+
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+
+    <!--Stile-->
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinGym/mobile.css' %}">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinGym/tablet.css' %}" media="(min-width: 800px)">
+    <link type='text/css' rel="stylesheet" href="{% static 'css/checkinGym/desktop.css' %}" media="(min-width: 1024px)">
+        
+    <!--Font Awesome-->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'>
+
+    
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <div class='copy'>
+            <p>&copy Creado por Oscar Lozano - 2023</p>
+        </div>
+        <div class='redes_sociales'>
+            <a href="https://www.linkedin.com/in/OlozanoBocanegra">
+                <i class="fa-brands fa-linkedin linkedin"></i>
+            </a>
+            <a href="https://github.com/Olozano1194">
+                <i class="fa-brands fa-github github"></i>
+            </a>
+        </div>
+        
+    </footer>
+    <script src="{% static 'js/updateDay.js' %}"></script>
+</body>
+</html>

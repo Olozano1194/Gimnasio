@@ -18,10 +18,6 @@
     <link type='text/css' rel="stylesheet" href="{% static 'css/welcome/mobile.css' %}">
     <link type='text/css' rel="stylesheet" href="{% static 'css/welcome/tablet.css' %}" media="(min-width: 800px)">
     <link type='text/css' rel="stylesheet" href="{% static 'css/welcome/desktop.css' %}" media="(min-width: 1024px)">
-
-    
-    <title>Welcome</title>
-
 </head>
 <body>
     <header class="w-100">
@@ -61,7 +57,7 @@
                               Miembro Diario
                               </a>
                               <ul class="dropdown-menu dropdown-menu-tertiary" aria-labelledby="navbarDarkDropdownMenuLink">
-                                  <li><a class="dropdown-item" href="registrarDiarios/checkinDay">Registrar miembro Diario</a></li>
+                                  <li><a class="dropdown-item" href="/checkinDay">Registrar miembro Diario</a></li>
                                   <li><a class="dropdown-item" href="{% url "listUser" %}?type=daily">Listar miembros diario</a></li>
                               </ul>
                             </li>

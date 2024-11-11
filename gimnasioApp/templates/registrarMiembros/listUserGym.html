@@ -1,67 +1,68 @@
-{% extends "layouts/base.html" %} 
-{% block content %}
-<main>
-  <div class="container py-4">
-    <div class="row">
-      <div class="tablas">
-        <h2 class="title">Listado de Usuarios Mensualidad</h2>
-        <div class="table-responsive">
-          <table
-            class="table table-striped display nowrap w-100"
-            id="dataTableGym"
-          >
-            <thead>
-              <tr>
-                <th class="center">#</th>
-                <th class="center">Name</th>
-                <th class="center">Lastname</th>
-                <th class="center">Phone</th>
-                <th class="center">Addres</th>
-                <th class="center">Start Date</th>
-                <th class="center">Final Date</th>
-                <th class="center" colspan="3">Options</th>
-              </tr>
-            </thead>
-            <tbody id="tableBodyGym">
-              {% for u in userGym %}
-              <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{u.name}}</td>
+{% extends "layouts/base.html" %} {% block content %}
+<head>
+  <title>List Member Gym</title>
+</head>
+<div class="container py-4">
+  <div class="row">
+    <div class="tablas">
+      <h2 class="title">Listado de Usuarios Mensualidad</h2>
+      <div class="table-responsive">
+        <table
+          class="table table-striped display nowrap w-100"
+          id="dataTableGym"
+        >
+          <thead>
+            <tr>
+              <th class="center">#</th>
+              <th class="center">Name</th>
+              <th class="center">Lastname</th>
+              <th class="center">Phone</th>
+              <th class="center">Addres</th>
+              <th class="center">Start Date</th>
+              <th class="center">Final Date</th>
+              <th class="center" colspan="3">Options</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyGym">
+            {% for u in userGym %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{u.name}}</td>
 
-                <td>{{u.lastname}}</td>
+              <td>{{u.lastname}}</td>
 
-                <td>{{u.phone}}</td>
+              <td>{{u.phone}}</td>
 
-                <td>{{u.address}}</td>
+              <td>{{u.address}}</td>
 
-                <td>{{u.dateInitial}}</td>
+              <td>{{u.dateInitial}}</td>
 
-                <td>{{u.dateFinal}}</td>
+              <td>{{u.dateFinal}}</td>
 
-                <td>
-                  <a
-                    href="{% url 'renovarGym' u.id %}"
-                    class="btn btn-sm btn-block btn-warning"
-                    ><i class="fa-solid fa-refresh"></i> Renew</a
-                  >
-                  <a
-                    href="{% url 'update' u.id %}"
-                    class="btn btn-sm btn-block btn-info"
-                    ><i class="fa-solid fa-pencil"></i> Update</a
-                  >
-                  <a
-                    href="{%  url 'delete' u.id %}"
-                    class="btn btn-sm btn-block btn-danger btnDelete"
-                    ><i class="fa-regular fa-trash-can"></i> Delete</a
-                  >
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+              <td>
+                <a
+                  href="{% url 'renovarGym' u.id %}"
+                  class="btn btn-sm btn-block btn-warning"
+                  ><i class="fa-solid fa-refresh"></i> Renew</a
+                >
+                <a
+                  href="{% url 'update' u.id %}"
+                  class="btn btn-sm btn-block btn-info"
+                  ><i class="fa-solid fa-pencil"></i> Update</a
+                >
+                <a
+                  href="{%  url 'delete' u.id %}"
+                  class="btn btn-sm btn-block btn-danger btnDelete"
+                  ><i class="fa-regular fa-trash-can"></i> Delete</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-</main>
+</div>
+
 {% endblock %}

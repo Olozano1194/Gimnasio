@@ -1,66 +1,67 @@
-{% extends "layouts/base.html" %} 
-{% block content %}
-<main>
-  <div class="container py-4">
-    <div class="row">
-      <!-- <div class="col-md-4">
+{% extends "layouts/base.html" %} {% block content %}
+<head>
+  <title>List Member Day</title>
+</head>
+<div class="container py-4">
+  <div class="row">
+    <!-- <div class="col-md-4">
                 </div> -->
-      <div class="col-md-12 tablas">
-        <h2 class="title">Listado de Usuarios Dia</h2>
-        <div class="table-responsive">
-          <table class="table table-striped" id="dataTableGymDay">
-            <thead>
-              <tr>
-                <th class="center">#</th>
-                <th class="center">Name</th>
-                <th class="center">Lastname</th>
-                <th class="center">Phone</th>
-                <th class="center">Start Date</th>
-                <th class="center">Price</th>
-                <th class="center" colspan="2">Options</th>
-              </tr>
-            </thead>
-            <tbody id="tableBodyGym">
-              {% for user in userGym %}
-              <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{user.name}}</td>
+    <div class="col-md-12 tablas">
+      <h2 class="title">Listado de Usuarios Dia</h2>
+      <div class="table-responsive">
+        <table class="table table-striped" id="dataTableGymDay">
+          <thead>
+            <tr>
+              <th class="center">#</th>
+              <th class="center">Name</th>
+              <th class="center">Lastname</th>
+              <th class="center">Phone</th>
+              <th class="center">Start Date</th>
+              <th class="center">Price</th>
+              <th class="center" colspan="2">Options</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyGym">
+            {% for user in userGym %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{user.name}}</td>
 
-                <td>{{user.lastname}}</td>
+              <td>{{user.lastname}}</td>
 
-                <td>{{user.phone}}</td>
+              <td>{{user.phone}}</td>
 
-                <td>{{user.dateInitial}}</td>
+              <td>{{user.dateInitial}}</td>
 
-                <td>{{user.price}}</td>
+              <td>{{user.price}}</td>
 
-                <td>
-                  <a
-                    href="{% url 'updateDay' user.id %}"
-                    class="btn btn-sm btn-block btn-info"
-                    ><i class="fa-solid fa-pencil"></i> Update</a
-                  >
-                  <a
-                    href="{%  url 'deleteDay' user.id %}"
-                    class="btn btn-sm btn-block btn-danger btnDelete"
-                    ><i class="fa-regular fa-trash-can"></i> Delete</a
-                  >
-                </td>
-              </tr>
+              <td>
+                <a
+                  href="{% url 'updateDay' user.id %}"
+                  class="btn btn-sm btn-block btn-info"
+                  ><i class="fa-solid fa-pencil"></i> Update</a
+                >
+                <a
+                  href="{%  url 'deleteDay' user.id %}"
+                  class="btn btn-sm btn-block btn-danger btnDelete"
+                  ><i class="fa-regular fa-trash-can"></i> Delete</a
+                >
+              </td>
+            </tr>
 
-              {% endfor %}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="4"></td>
-                <td>Total:</td>
-                <td>{{ total_price }}</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4"></td>
+              <td>Total:</td>
+              <td>{{ total_price }}</td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
   </div>
-</main>
+</div>
+
 {% endblock %}
