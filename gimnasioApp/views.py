@@ -202,13 +202,18 @@ def listUser(request):
     
     # Obtener el template a usar
     template_type = request.GET.get('type', 'monthly')
+
+    
+    
     
     if template_type == 'monthly':
         template_name = 'registrarMiembros/listUserGym.html'
+        #total_price = sum(user.price for user in UserGymList)
         context = {'userGym': UserGymList}
     else:
         template_name = 'registrarDiarios/listUserDay.html'
-        context = {'userGym': UserDayList}
+        total_price = sum(user.price for user in UserDayList)
+        context = {'userGym': UserDayList, 'total_price': total_price}
     
     return render(request, template_name, context)
 
