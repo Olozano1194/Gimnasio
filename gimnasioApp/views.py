@@ -127,7 +127,7 @@ def update_user(request, id):
     fecha_correcta2 = datetime.strptime(fecha_incorrecta2, "%m-%d-%Y").strftime("%Y-%m-%d")
     usuario.dateFinal = fecha_correcta2
 
-    return render(request,'update.html', {'user': usuario})
+    return render(request,'registrarMiembros/update.html', {'user': usuario})
 
 #@login_required
 def actualizar(request, id):
@@ -228,7 +228,7 @@ def update_userDay(request, id):
     fecha_correcta = datetime.strptime(fecha_incorrecta, "%m-%d-%Y").strftime("%Y-%m-%d")
     usuario.dateInitial = fecha_correcta
 
-    return render(request,'updateDay.html', {'userDay': usuario})
+    return render(request,'registrarDiarios/updateDay.html', {'userDay': usuario})
 
 #@login_required
 def actualizarDay(request, id):
