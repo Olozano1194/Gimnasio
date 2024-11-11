@@ -4,16 +4,11 @@
 }
 
 /* Cards */
-.row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.card {
+    width: 90%;
+   
 }
 
-.col {
-    width: 85%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card-text {
+    font-size: 1.35rem !important;
 }
