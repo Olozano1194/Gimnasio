@@ -89,17 +89,40 @@ def welcome(request):
     UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
     UserDayList = RegistrarUsuarioGymDay.objects.all().order_by('-id')
 
+    now = timezone.now()
+    month = now.month
+    year = now.year
+
     #Calculamos el numero de miembros 
     num_miembros = RegistrarUsuarioGym.objects.count()
 
-    #Cantidad de dinero usuarios mensualidad
-    total_gym = sum(user.price for user in UserGymList)
-    #Cantidad de dinero del dia
-    total_day = sum(user.price for user in UserDayList)
-    #Cantidad de dinero del mes
-    total_month = total_gym + total_day
+    #Filtramos los miembros del gimnasio registrados en el mes
+    miembros_mes = RegistrarUsuarioGym.objects.filter(dateInitial__month=month, dateInitial__year=year)
+    #Cantidad de dinero miembros mensualidad
+    total_gym_mes = sum(user.price for user in miembros_mes)
 
-    return render(request, 'welcome.html', { 'num_miembros': num_miembros, 'total_month': total_month})
+    #Filtramos los miembros del gimnasio registrados en el mes
+    miembrosDay_mes = RegistrarUsuarioGymDay.objects.filter(dateInitial__month=month, dateInitial__year=year)
+    #Cantidad de dinero del dia
+    total_day_mes = sum(user.price for user in miembrosDay_mes)
+
+    #Cantidad de dinero del mes
+    total_month = total_gym_mes + total_day_mes
+
+    #Filtramos los miembros registrados en el mes actual
+    miembros_mes = RegistrarUsuarioGym.objects.filter(dateInitial__month=month, dateInitial__year=year).count()
+
+    #Total de dinero en el gym
+    total_gym = sum(user.price for user in UserGymList)
+    total_day = sum(user.price for user in UserDayList)
+    total = total_gym + total_day                                                     
+
+    return render(request, 'welcome.html', { 
+        'num_miembros': num_miembros, 
+        'total_month': total_month, 
+        'miembros_mes': miembros_mes,
+        'total': total
+        })
 
 #Esta parte es la vista de los usuarios del gym
 #@login_required
