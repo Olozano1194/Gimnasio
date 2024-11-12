@@ -36,6 +36,7 @@ class RegistrarUsuarioGym(models.Model):
     address = models.CharField(max_length=50)
     dateInitial = models.DateField(max_length=50)
     dateFinal = models.DateField(max_length=50)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return self.name

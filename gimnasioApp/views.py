@@ -86,8 +86,20 @@ def formcheckinUser(request):
 
 #@login_required
 def welcome(request):
-    
-    return render(request, 'welcome.html')
+    UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
+    UserDayList = RegistrarUsuarioGymDay.objects.all().order_by('-id')
+
+    #Calculamos el numero de miembros 
+    num_miembros = RegistrarUsuarioGym.objects.count()
+
+    #Cantidad de dinero usuarios mensualidad
+    total_gym = sum(user.price for user in UserGymList)
+    #Cantidad de dinero del dia
+    total_day = sum(user.price for user in UserDayList)
+    #Cantidad de dinero del mes
+    total_month = total_gym + total_day
+
+    return render(request, 'welcome.html', { 'num_miembros': num_miembros, 'total_month': total_month})
 
 #Esta parte es la vista de los usuarios del gym
 #@login_required
