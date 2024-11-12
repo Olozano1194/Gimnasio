@@ -166,25 +166,6 @@
  }
 
  /* Errores */
- .form-control {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.form-control input {
-    border: none;
-}
-
-input[type="text"],
-input[type="Date"] {
-    border: 2px solid #cecece;
-    border-radius: .5rem;
-    padding: 1rem 1.5rem;
-    font-size: 1.5rem;
-    color: #3b3939;
-    outline: none;
-}
-
 .falla{
     border: solid 1px red;
     box-shadow: 0 0 10px red;
@@ -206,12 +187,6 @@ input[type="Date"] {
 
 .priceModifiado{
     margin-top: .5rem;
-}
-
-
-.errorViews {
-    font-size: 2rem;
-    color: #e80c3c;
 }
  
  @media(min-width: 600px) {
