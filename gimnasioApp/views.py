@@ -43,7 +43,7 @@ def Login(request):
         else:
             return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
 
-# @login_required
+@login_required
 def registerBd(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -65,7 +65,7 @@ def singoff(request):
     logout(request)
     return redirect('login')
 
-#@login_required
+@login_required
 def formcheckinUser(request):
     if request.method == 'GET':
         return render(request, 'login/checkInLogin.html')
@@ -84,7 +84,7 @@ def formcheckinUser(request):
                 
         return render(request, 'login/checkInLogin.html', { 'error': 'Password do not match'})    
 
-#@login_required
+@login_required
 def welcome(request):
     UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
     UserDayList = RegistrarUsuarioGymDay.objects.all().order_by('-id')
@@ -124,6 +124,7 @@ def welcome(request):
         'total': total
         })
 
+@login_required
 def listUser(request):
     userGymList = RegistrarUsuario.objects.all().order_by('-id')
 
@@ -131,7 +132,7 @@ def listUser(request):
 
 
 #Esta parte es la vista de los usuarios del gym
-#@login_required
+@login_required
 def formcheckinGym(request):
     #Obtenemos la fecha actual
     today_date = date.today() 
@@ -148,7 +149,7 @@ def formcheckinGym(request):
         
     return render(request, 'registrarMiembros/checkInGym.html', { 'error': 'Usuario ya existe', 'today_date': today_date})
 
-#@login_required
+@login_required
 def delete_user(request,id):
     usuarioGym= RegistrarUsuarioGym.objects.get(id=id)
     
@@ -156,7 +157,7 @@ def delete_user(request,id):
     
     return redirect('welcome')
 
-#@login_required
+@login_required
 def update_user(request, id):
     usuario= RegistrarUsuarioGym.objects.get(id=id)
     
@@ -170,7 +171,7 @@ def update_user(request, id):
 
     return render(request,'registrarMiembros/update.html', {'user': usuario})
 
-#@login_required
+@login_required
 def actualizar(request, id):
     
     if request.method == 'POST':
@@ -191,6 +192,7 @@ def actualizar(request, id):
         usuario.save()
         return redirect('welcome')
 
+@login_required
 def renovar_mensualidad(request, usuario_id=None):
     usuario = get_object_or_404(RegistrarUsuarioGym, id=usuario_id) #Obtenemos al usuario por su ID
 
@@ -220,7 +222,7 @@ def renovar_mensualidad(request, usuario_id=None):
         })
 
 #Esta es la parte de los usuarios de dia de rutina
-#@login_required
+@login_required
 def formcheckinGymDay(request):
     #Obtenemos la fecha actual
     today_date = date.today()
@@ -235,7 +237,7 @@ def formcheckinGymDay(request):
         
     return render(request, 'registrarDiarios/checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
 
-#@login_required
+@login_required
 def listMember(request):
      # Obtener todos los usuarios
     UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
@@ -255,7 +257,7 @@ def listMember(request):
     
     return render(request, template_name, context)
 
-#@login_required
+@login_required
 def delete_userDay(request,id):
     usuarioGym= RegistrarUsuarioGymDay.objects.get(id=id)
     
@@ -263,7 +265,7 @@ def delete_userDay(request,id):
     
     return redirect('welcome')
 
-#@login_required
+@login_required
 def update_userDay(request, id):
     usuario= RegistrarUsuarioGymDay.objects.get(id=id)
     
@@ -273,7 +275,7 @@ def update_userDay(request, id):
 
     return render(request,'registrarDiarios/updateDay.html', {'userDay': usuario})
 
-#@login_required
+@login_required
 def actualizarDay(request, id):
     
     if request.method == 'POST':
