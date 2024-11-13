@@ -1,24 +1,24 @@
 {% extends "layouts/base.html" %} {% block content %}
 <head>
-  <title>List Member Day</title>
+  <title>Listado de Miembros Diarios</title>
 </head>
 <div class="container py-4">
   <div class="row">
     <!-- <div class="col-md-4">
                 </div> -->
     <div class="w-100 col-md-12 tablas">
-      <h2 class="title">Listado de Usuarios Dia</h2>
+      <h2 class="title">Listado de Miembros Dia</h2>
       <div class="table-responsive">
         <table class="table table-striped" id="dataTableGymDay">
           <thead>
             <tr>
               <th class="center">#</th>
-              <th class="center">Name</th>
-              <th class="center">Lastname</th>
-              <th class="center">Phone</th>
-              <th class="center">Start Date</th>
-              <th class="center">Price</th>
-              <th class="center">Options</th>
+              <th class="center">Nombre</th>
+              <th class="center">Apellido</th>
+              <th class="center">Telefono</th>
+              <th class="center">Fecha Inicial</th>
+              <th class="center">Precio</th>
+              <th class="center">Opciones</th>
             </tr>
           </thead>
           <tbody id="tableBodyGym">
@@ -39,12 +39,12 @@
                 <a
                   href="{% url 'updateDay' user.id %}"
                   class="btn btn-sm btn-block btn-info"
-                  ><i class="fa-solid fa-pencil"></i> Update</a
+                  ><i class="fa-solid fa-pencil"></i> Actualizar</a
                 >
                 <a
                   href="{%  url 'deleteDay' user.id %}"
                   class="btn btn-sm btn-block btn-danger btnDelete"
-                  ><i class="fa-regular fa-trash-can"></i> Delete</a
+                  ><i class="fa-regular fa-trash-can"></i> Eliminar</a
                 >
               </td>
             </tr>

@@ -1,9 +1,9 @@
 {% extends "layouts/register.html" %} {% block content %}
 <head>
-    <title>Register User Day</title>
+    <title>Registrar Miembro Diario</title>
 </head>
 <header>
-        <h1 class="title">checkIn</h1>
+        <h1 class="title">Registrar Miembro Diario</h1>
 </header>
 <main>
     {% if error  %}
@@ -23,31 +23,31 @@
                 {% comment %} <input type="hidden" name="id"> {% endcomment %}
                 
             <div class= "form-control container-LabelInput">
-                    <label for="name" class="label">Name:</label>
+                    <label for="name" class="label">Nombre:</label>
                     <input type="text" class="names" id="name" name="name" maxlength="50">
                     <p></p>
             </div>
 
             <div class="form-control container-LabelInput">
-                    <label for="lastname" class="label">LastName:</label>
+                    <label for="lastname" class="label">Apellido:</label>
                     <input type="text" class="lastnames" id="lastname" name="lastname" maxlength="50">
                     <p></p>
             </div>
 
             <div class="form-control container-LabelInput">
-                    <label for="phone" class="label">Phone:</label>
+                    <label for="phone" class="label">Telefono:</label>
                     <input type="text" class="phones" id="phone" name="phone" maxlength="10" >
                     <p></p>
             </div>
 
             <div class="container-LabelInput">
-                    <label for="dateInitial" class="label">Initial Date:</label>
+                    <label for="dateInitial" class="label">Fecha Inicial:</label>
                     <input type="date" id="dateInitial" class="initDate" name="dateInitial" min="{{ today_date|date:'Y-m-d' }}" max="{{ today_date|date:'Y-m-d' }}" >
                     <p></p>                    
             </div>
 
             <div class="form-control container-LabelInput">
-                    <label for="price" class="label">Price:</label>
+                    <label for="price" class="label">Precio:</label>
                     <input type="text" id="price" class="prices" name="price" >
                     <p class="priceModifiado"></p>
             </div>    
@@ -56,7 +56,7 @@
         <div class="container-btn">
                 
                 {% comment %} <input class='btnUpdate' type='submit' value='Update'> {% endcomment %}
-                <button type="submit" class='btnUpdate'><i class="fa-solid fa-floppy-disk"></i> Update</button>
+                <button type="submit" class='btnUpdate'><i class="fa-solid fa-floppy-disk"></i> Actualizar</button>
 
         </div>
     </form>

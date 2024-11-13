@@ -1,10 +1,10 @@
 {% extends "layouts/register.html" %} {% block content %}
 <head>
-  <title>Update User Day</title>
+  <title>Actualizar Miembro Diario</title>
 </head>
 
 <header>
-  <h1 class="title">Update User Day</h1>
+  <h1 class="title">Actualizar Miembro Diario</h1>
 </header>
 
 <main>
@@ -22,7 +22,7 @@
       <input type="hidden" name="id" value="{{userDay.id}}" />
 
       <div class="form-control container-LabelInput">
-        <label for="name" class="label">Name:</label>
+        <label for="name" class="label">Nombre:</label>
         <input
           type="text"
           class="names"
@@ -35,7 +35,7 @@
       </div>
 
       <div class="form-control container-LabelInput">
-        <label for="lastname" class="label">LastName:</label>
+        <label for="lastname" class="label">Apellido:</label>
         <input
           type="text"
           class="lastnames"
@@ -48,7 +48,7 @@
       </div>
 
       <div class="form-control container-LabelInput">
-        <label for="phone" class="label">Phone:</label>
+        <label for="phone" class="label">Telefono:</label>
         <input
           type="text"
           class="phones"
@@ -61,7 +61,7 @@
       </div>
 
       <div class="form-control container-LabelInput">
-        <label for="dateInitial" class="label">Initial Date:</label>
+        <label for="dateInitial" class="label">Fecha Inicial:</label>
         <input
           type="date"
           id="dateInitial"
@@ -73,7 +73,7 @@
       </div>
 
       <div class="form-control container-LabelInput">
-        <label for="price" class="label">Price:</label>
+        <label for="price" class="label">Precio:</label>
         <input
           type="text"
           id="price"
@@ -87,8 +87,7 @@
 
     <div class="container-btn">
       <button type="submit" class="btnUpdate">
-        <i class="fa-solid fa-floppy-disk"></i> Update
-      </button>
+        <i class="fa-solid fa-floppy-disk"></i> Actualizar</button>
     </div>
   </form>
 </main>
