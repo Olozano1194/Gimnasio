@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import formcheckinUser, Login, singoff, welcome, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad, listUser
+from .views import formcheckinUser, Login, singoff, welcome, delete_user, update_user, actualizar, formcheckinGym, formcheckinGymDay, update_userDay, actualizarDay, delete_userDay, renovar_mensualidad, listMember, listUser
 
 
 
@@ -8,6 +8,7 @@ urlpatterns = [
     path('checkinUser/', formcheckinUser, name='checkinUser'),
     path('logout/', singoff, name='logout'),
     path('welcome/', welcome, name='welcome'),
+    path('listMember/', listMember, name='listMember'),
     path('listUser/', listUser, name='listUser'),
 
     path('update/<int:id>', update_user, name='update'),

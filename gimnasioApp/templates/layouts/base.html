@@ -44,7 +44,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-tertiary" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a class="dropdown-item" href="/checkinGym">Registrar miembros</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'listUser' %}?type=monthly">Listar miembros</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'listMember' %}?type=monthly">Listar miembros</a></li>
                                 </ul>
                             </li>
     
@@ -58,7 +58,7 @@
                               </a>
                               <ul class="dropdown-menu dropdown-menu-tertiary" aria-labelledby="navbarDarkDropdownMenuLink">
                                   <li><a class="dropdown-item" href="/checkinDay">Registrar miembro Diario</a></li>
-                                  <li><a class="dropdown-item" href="{% url "listUser" %}?type=daily">Listar miembros diario</a></li>
+                                  <li><a class="dropdown-item" href="{% url "listMember" %}?type=daily">Listar miembros diario</a></li>
                               </ul>
                             </li>
     
@@ -68,7 +68,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-tertiary" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a class="dropdown-item" href="/checkinUser">Registrar usuarios</a></li>
-                                    <li><a class="dropdown-item" href="#">Listar Usuarios</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'listUser' %}">Listar Usuarios</a></li>
                                 </ul>
                             </li>
                         {% else %}

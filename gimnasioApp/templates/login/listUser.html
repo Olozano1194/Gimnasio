@@ -1,0 +1,61 @@
+{% extends "layouts/base.html" %} {% block content %}
+<head>
+  <title>List Member Day</title>
+</head>
+<div class="container py-4">
+  <div class="row">
+    <!-- <div class="col-md-4">
+                </div> -->
+    <div class="w-100 col-md-12 tablas">
+      <h2 class="title">Listado de Usuarios Dia</h2>
+      <div class="table-responsive">
+        <table class="table table-striped" id="dataTableGymDay">
+          <thead>
+            <tr>
+              <th class="center">#</th>
+              <th class="center">Name</th>
+              <th class="center">Lastname</th>
+              <th class="center">User</th>
+              <th class="center">Email</th>
+              <th class="center">roles</th>
+              <th class="center">Options</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyGym">
+            {% for user in userGymList %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+
+              <td>{{user.name}}</td>
+
+              <td>{{user.lastname}}</td>
+
+              <td>{{user.user}}</td>
+
+              <td>{{user.email}}</td>
+
+              <td>{{user.roles}}</td>
+
+              <td>
+                <a
+                  href="#"
+                  class="btn btn-sm btn-block btn-info"
+                  ><i class="fa-solid fa-pencil"></i> Update</a
+                >
+                <a
+                  href="#"
+                  class="btn btn-sm btn-block btn-danger btnDelete"
+                  ><i class="fa-regular fa-trash-can"></i> Delete</a
+                >
+              </td> 
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

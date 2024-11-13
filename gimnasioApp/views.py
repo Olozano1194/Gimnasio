@@ -124,6 +124,12 @@ def welcome(request):
         'total': total
         })
 
+def listUser(request):
+    userGymList = RegistrarUsuario.objects.all().order_by('-id')
+
+    return render(request, 'login/listUser.html', {'userGymList': userGymList})
+
+
 #Esta parte es la vista de los usuarios del gym
 #@login_required
 def formcheckinGym(request):
@@ -230,16 +236,13 @@ def formcheckinGymDay(request):
     return render(request, 'registrarDiarios/checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
 
 #@login_required
-def listUser(request):
+def listMember(request):
      # Obtener todos los usuarios
     UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
     UserDayList = RegistrarUsuarioGymDay.objects.all().order_by('-id')
     
     # Obtener el template a usar
     template_type = request.GET.get('type', 'monthly')
-
-    
-    
     
     if template_type == 'monthly':
         template_name = 'registrarMiembros/listUserGym.html'
