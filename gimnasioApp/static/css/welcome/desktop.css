@@ -26,6 +26,27 @@
     gap: 1rem;
 }
 
+#dataTableGymDay .center {
+    font-size: 1.2rem;
+}
+
+#dataTableGymDay td {
+    font-size: 1.2rem;
+}
+
+#dataTableGymDay .btn {
+    font-size: 1rem;
+}
+
+#dataTableGym .center {
+    font-size: 1rem;
+}
+
+#dataTableGym .btn {
+    font-size: 1rem;
+
+}
+
 /* footer */
 footer .copy{
     font-size: 25px;

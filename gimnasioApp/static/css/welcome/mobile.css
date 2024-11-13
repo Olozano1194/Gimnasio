@@ -62,11 +62,14 @@ main {
 }
 
 /*Tablas*/
-
 .tablas {
     max-width: 1190px;
 }
 
+#dataTableGym_filter, #dataTableGymDay_filter {
+    display: flex;
+    justify-content: end;
+}
 /* Footer */
 footer {
     width: 100%;
