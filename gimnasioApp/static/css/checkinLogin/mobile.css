@@ -43,6 +43,7 @@ main {
     background: white;
     border: 0.1rem solid burlywood;
     border-radius: 1rem;
+    flex-direction: column;
     margin-top: 2rem;
 }
 
