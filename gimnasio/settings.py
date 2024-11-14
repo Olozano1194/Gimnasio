@@ -94,7 +94,7 @@ DATABASES = {
     # Replace the SQLite DATABASES configuration with PostgreSQL:
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/gym',
+        default='postgresql://postgres:postgres@localhost:5432/gym_h1on',
         conn_max_age=600
     )
 }
