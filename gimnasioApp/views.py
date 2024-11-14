@@ -65,7 +65,7 @@ def singoff(request):
     logout(request)
     return redirect('login')
 
-@login_required
+#@login_required
 def formcheckinUser(request):
     if request.method == 'GET':
         return render(request, 'login/checkInLogin.html')
