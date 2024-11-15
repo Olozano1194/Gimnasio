@@ -11,10 +11,8 @@ class UsuarioForm(forms.ModelForm):
             'user',
             'email',
             'roles',
-            'password',
-           
+            'password',           
         ]
-
 
 class UsuarioFormGym(forms.ModelForm):
     class Meta:

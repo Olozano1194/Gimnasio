@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . forms import UsuarioForm, UsuarioFormGym, UsuarioFormGymDay, RenovacionForm
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout, authenticate
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from .models import RegistrarUsuario, RegistrarUsuarioGym, RegistrarUsuarioGymDay, Renovacion
 from django.contrib.auth.decorators import login_required
 
@@ -70,19 +71,82 @@ def formcheckinUser(request):
     if request.method == 'GET':
         return render(request, 'login/checkInLogin.html')
     
-    else:
-        if request.POST['password'] == request.POST['repeatpassword']:
-            try:
-                user = User.objects.create_user(username=request.POST['user'], password=request.POST['password'])
-                registerBd(request)
-                user.save()
-                login(request,user)
+    if request.method == 'POST':
+        username = request.POST['user']
+        email = request.POST['email']
+        
+        # Verificaciones previas más específicas
+        if RegistrarUsuario.objects.filter(user=username).exists():
+            return render(request, 'login/checkInLogin.html', {
+                'error': f'El nombre de usuario "{username}" ya está en uso',
+                'form_data': request.POST
+            })
+            
+        if RegistrarUsuario.objects.filter(email=email).exists():
+            return render(request, 'login/checkInLogin.html', {
+                'error': f'El email "{email}" ya está registrado',
+                'form_data': request.POST
+            })
+
+        if request.POST['password'] != request.POST['repeatpassword']:
+            return render(request, 'login/checkInLogin.html', {
+                'error': 'Las contraseñas no coinciden',
+                'form_data': request.POST
+            })
+
+        try:
+            # Crear el hash de la contraseña fuera de la transacción
+            hashed_password = bcrypt.hashpw(
+                request.POST['password'].encode('utf-8'),
+                bcrypt.gensalt()
+            ).decode('utf-8')
+
+            with transaction.atomic():
+                # Primero intentar crear el usuario personalizado
+                usuario_personalizado = RegistrarUsuario.objects.create(
+                    name=request.POST['name'],
+                    lastname=request.POST['lastname'],
+                    user=username,
+                    email=email,
+                    roles=request.POST['roles'],
+                    password=hashed_password
+                )
+                
+                # Si el usuario personalizado se creó exitosamente, crear el usuario de Django
+                django_user = User.objects.create_user(
+                    username=username,
+                    email=email,
+                    password=request.POST['password'],
+                    first_name=request.POST['name'],
+                    last_name=request.POST['lastname']
+                )
+                
+                # Iniciar sesión
+                #login(request, django_user)
                 return redirect('login')
 
-            except IntegrityError:
-                render(request, 'login/checkInLogin.html', { 'error': 'Usuario ya existe'}) 
-                
-        return render(request, 'login/checkInLogin.html', { 'error': 'Password do not match'})    
+        except IntegrityError as e:
+            # Para debugging
+            print(f"Error de integridad: {str(e)}")
+            error_message = 'El usuario o email ya existe'
+            if 'user' in str(e):
+                error_message = 'El nombre de usuario ya está en uso'
+            elif 'email' in str(e):
+                error_message = 'El email ya está registrado'
+            
+            return render(request, 'login/checkInLogin.html', {
+                'error': error_message,
+                'form_data': request.POST
+            })
+        except Exception as e:
+            # Para debugging
+            print(f"Error inesperado: {str(e)}")
+            return render(request, 'login/checkInLogin.html', {
+                'error': f'Error al crear el usuario: {str(e)}',
+                'form_data': request.POST
+            })
+
+    return render(request, 'checkInLogin.html')
 
 #@login_required
 def welcome(request):
