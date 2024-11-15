@@ -84,20 +84,20 @@ WSGI_APPLICATION = 'gimnasio.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'gym',
-    #     'USER': 'root',
-    #     'PASSWORD': '123456',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gym',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
     # Replace the SQLite DATABASES configuration with PostgreSQL:
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://ym_h1on_user:fxiMtqp5KkO4yGY3dCGGK4w0DvqtF4tg@dpg-csq7umaj1k6c738ee6e0-a.oregon-postgres.render.com/gym_h1on',
-        conn_max_age=600        
-    )
+    # 'default': dj_database_url.config(
+    #     # Replace this value with your local database's connection string.
+    #     default='postgresql://ym_h1on_user:fxiMtqp5KkO4yGY3dCGGK4w0DvqtF4tg@dpg-csq7umaj1k6c738ee6e0-a.oregon-postgres.render.com/gym_h1on',
+    #     conn_max_age=600        
+    # )
 }
 
 
