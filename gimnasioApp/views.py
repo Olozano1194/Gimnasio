@@ -237,7 +237,7 @@ def formcheckinGymDay(request):
         
     return render(request, 'registrarDiarios/checkIn.html', { 'error': 'Error al guardar el usuario', 'today_date': today_date})
 
-@login_required
+#@login_required
 def listMember(request):
      # Obtener todos los usuarios
     UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
