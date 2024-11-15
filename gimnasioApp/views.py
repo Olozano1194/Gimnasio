@@ -84,7 +84,7 @@ def formcheckinUser(request):
                 
         return render(request, 'login/checkInLogin.html', { 'error': 'Password do not match'})    
 
-@login_required
+#@login_required
 def welcome(request):
     UserGymList = RegistrarUsuarioGym.objects.all().order_by('-id')
     UserDayList = RegistrarUsuarioGymDay.objects.all().order_by('-id')
