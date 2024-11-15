@@ -124,7 +124,7 @@ def welcome(request):
         'total': total
         })
 
-@login_required
+#@login_required
 def listUser(request):
     userGymList = RegistrarUsuario.objects.all().order_by('-id')
 
