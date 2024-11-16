@@ -15,6 +15,7 @@ main {
 }
 /* main form */
 main form .containerForm .label {
+    width: 15rem;
     font-size: 2.5rem;
 }
 
