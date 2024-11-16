@@ -9,6 +9,7 @@ const dataTableOptions = {
     destroy: true, //Destruir instancias previas de la tabla al iniciar de nuevo
     order: [[0, 'desc']], //Ordenar por la primera columna de manera descendente
     //"aaSorting": []
+    responsive: true
 }
 
 $(document).ready(function () {
@@ -26,5 +27,6 @@ const dataTableOptionsDay = {
     ],
     pageLength: 8,
     destroy: true, 
-    order: [[0, 'desc']]
+    order: [[0, 'desc']],
+    responsive:true
 }

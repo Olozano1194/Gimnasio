@@ -2,64 +2,64 @@
 <head>
   <title>Listado de Miembros</title>
 </head>
-<div class="container py-2">
-  <div class="row">
-    <div class="tablas col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <h2 class="title">Listado de Usuarios Mensualidad</h2>
-      <div class="table-responsive">
-        <table class="table table-striped display nowrap w-100" id="dataTableGym">
-          <thead>
-            <tr>
-              <th class="center">#</th>
-              <th class="center">Nombre</th>
-              <th class="center">Apellido</th>
-              <th class="center">Telefono</th>
-              <th class="center">Dirección</th>
-              <th class="center">Fecha Inicial</th>
-              <th class="center">Fecha Final</th>
-              <th class="center" colspan="2">Opciones</th>
-            </tr>
-          </thead>
-          <tbody id="tableBodyGym">
-            {% for u in userGym %}
-            <tr>
-              <td>{{forloop.counter}}</td>
-              <td>{{u.name}}</td>
+<div class="container py-5">
+  {% comment %} <div class="table-responsive"> {% endcomment %}
+    <h2 class="title">Listado de Usuarios Mensualidad</h2>
+    <div class="table-responsive">
+      <table class="table table-striped" id="dataTableGym" style='width:100%'>
+        <thead>
+          <tr>
+            <th class="center">#</th>
+            <th class="center">Nombre</th>
+            <th class="center">Apellido</th>
+            <th class="center">Telefono</th>
+            <th class="center">Dirección</th>
+            <th class="center">Fecha Inicial</th>
+            <th class="center">Fecha Final</th>
+            <th class="center" colspan="2">Opciones</th>
+          </tr>
+        </thead>
+        <tbody id="tableBodyGym">
+          {% for u in userGym %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{u.name}}</td>
 
-              <td>{{u.lastname}}</td>
+            <td>{{u.lastname}}</td>
 
-              <td>{{u.phone}}</td>
+            <td>{{u.phone}}</td>
 
-              <td>{{u.address}}</td>
+            <td>{{u.address}}</td>
 
-              <td>{{u.dateInitial}}</td>
+            <td>{{u.dateInitial}}</td>
 
-              <td>{{u.dateFinal}}</td>
+            <td>{{u.dateFinal}}</td>
 
-              <td>
-                {% comment %} <a
-                  href="{% url 'renovarGym' u.id %}"
-                  class="btn btn-sm btn-block btn-warning"
-                  ><i class="fa-solid fa-refresh"></i> Renovar</a
-                > {% endcomment %}
-                <a
-                  href="{% url 'update' u.id %}"
-                  class="btn btn-sm btn-block btn-info"
-                  ><i class="fa-solid fa-pencil"></i> Actualizar</a
-                >
-                <a
-                  href="{%  url 'delete' u.id %}"
-                  class="btn btn-sm btn-block btn-danger btnDelete"
-                  ><i class="fa-regular fa-trash-can"></i> Eliminar</a
-                >
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+            <td>
+              {% comment %}
+              <a
+                href="{% url 'renovarGym' u.id %}"
+                class="btn btn-sm btn-block btn-warning"
+                ><i class="fa-solid fa-refresh"></i> Renovar</a
+              >
+              {% endcomment %}
+              <a
+                href="{% url 'update' u.id %}"
+                class="btn btn-sm btn-block btn-info"
+                ><i class="fa-solid fa-pencil"></i> Actualizar</a
+              >
+              <a
+                href="{%  url 'delete' u.id %}"
+                class="btn btn-sm btn-block btn-danger btnDelete"
+                ><i class="fa-regular fa-trash-can"></i> Eliminar</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-  </div>
-</div>
+  {% comment %} </div> {% endcomment %}
 
-{% endblock %}
+  {% endblock %}
+</div>
