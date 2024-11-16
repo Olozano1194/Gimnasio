@@ -37,11 +37,11 @@
               <td>{{u.dateFinal}}</td>
 
               <td>
-                <a
+                {% comment %} <a
                   href="{% url 'renovarGym' u.id %}"
                   class="btn btn-sm btn-block btn-warning"
                   ><i class="fa-solid fa-refresh"></i> Renovar</a
-                >
+                > {% endcomment %}
                 <a
                   href="{% url 'update' u.id %}"
                   class="btn btn-sm btn-block btn-info"
