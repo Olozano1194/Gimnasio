@@ -44,22 +44,22 @@ def Login(request):
         else:
             return render(request, 'login/login.html', {'error': 'Username or password is incorrect'})
 
-@login_required
-def registerBd(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
+# @login_required
+# def registerBd(request):
+#     if request.method == 'POST':
+#         form = UsuarioForm(request.POST)
 
-        if form.is_valid():
-            password = form.cleaned_data['password']
-            hashed_password= bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+#         if form.is_valid():
+#             password = form.cleaned_data['password']
+#             hashed_password= bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-            usuario = form.save(commit=False)
-            usuario.password= hashed_password.decode('utf-8') #Guardamos la contra como un string
-            usuario.save()
-            return redirect('login')
-    else:
-        form = UsuarioForm()
-    return render(request, 'checkIn.html', {'form': form})
+#             usuario = form.save(commit=False)
+#             usuario.password= hashed_password.decode('utf-8') #Guardamos la contra como un string
+#             usuario.save()
+#             return redirect('login')
+#     else:
+#         form = UsuarioForm()
+#     return render(request, 'checkIn.html', {'form': form})
 
 @login_required
 def singoff(request):
