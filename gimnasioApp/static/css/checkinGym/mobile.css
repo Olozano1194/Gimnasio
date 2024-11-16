@@ -34,6 +34,10 @@
      padding-top: 2rem;
      padding-bottom: 2rem;
  }
+
+ header .titleDay {
+    font-size: 3rem;
+ }
  
  main {
      width: 90%;
