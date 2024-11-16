@@ -1,9 +1,7 @@
 /* header */
 header {
     padding-top: 4rem;
-    @media (min-width: 1000px){
-        padding-top: 0rem;
-    }
+   
 }
 
 header .logo {
@@ -35,6 +33,9 @@ main form .containerForm {
 
 main form .containerForm .label {
     font-size: 2.3rem;
+    @media(min-width: 900px) {
+        width: 13rem;
+    }
 }
 
 main form .containerForm .inputs {
@@ -57,5 +58,16 @@ footer {
 
 footer .copy{
     font-size: 2rem;
+    @media (min-width: 1000px) {
+        font-size: 2.5rem;
+    }
     
 }
+
+footer .redes_sociales {
+    @media (min-width: 1000px) {
+        font-size: 3.7rem;
+    }
+
+}
+

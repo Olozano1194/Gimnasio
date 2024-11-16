@@ -4,10 +4,9 @@ header {
 }
 
 header .logo {
-    width: 100px;
+    width: 8%;
     max-width: 110px;
-    height: 80%;
-    
+       
 }
 /* main */
 main {

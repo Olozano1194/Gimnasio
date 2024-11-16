@@ -17,7 +17,7 @@ body {
     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1));
     font-family: 'Times New Roman', Times, serif;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,16 +26,16 @@ body {
 
 header {
     width: 100%;
-    /* height: 20vh; */
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    padding-top: 1.2rem;
     padding-bottom: 2rem;
 }
 
 header .logo {
-    width: 15%;
+    width: 13%;
     height: 80%;
     border-radius: 1rem;
 }
@@ -43,7 +43,7 @@ header .logo {
 header .title {
     text-align: center;
     color: cadetblue;
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding-top: 2rem;
     padding-bottom: 1rem;
 }
@@ -56,6 +56,7 @@ header .logo:hover {
 main {
     width: 85%;
     height: 60vh;
+    max-height: 350px;
     display: flex;
     /* justify-content: center; */
     align-items: center;
@@ -83,8 +84,7 @@ main form .titletwo {
     text-align: center;
     color: #423d3d;
     font-size: 2.5rem;
-    /* padding-top: 2rem; */
-    padding-bottom: 1rem;
+    padding-bottom: 2.5rem;
 }
 
 main form .errorViews {
@@ -139,6 +139,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin: auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
     
@@ -146,13 +147,13 @@ footer {
 
 footer .copy{
     color: #616060;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
 footer .redes_sociales{
     display: flex;
-    font-size: 3rem;
+    font-size: 2.7rem;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
@@ -178,18 +179,85 @@ footer .redes_sociales .github:hover {
 }
 
 /* Responsive */
+@media screen and (min-width: 370px) and (max-width: 399px) {
+    header {
+        padding-top: 1.2rem;
+    }
+
+    header .logo {
+        width: 12%;
+        
+    }
+    
+    header .title {
+        font-size: 2.5rem;
+    }
+
+    main form .titletwo {
+        padding-bottom: 2.5rem;
+    }
+
+    main form .containerForm .label {
+        font-size: 1.8rem;
+    }
+
+    main form .containerForm .inputs {
+        padding-left: 1rem;
+        
+    }
+
+    footer {
+        gap: 1rem;
+    }
+
+    footer .copy{
+        font-size: 1.4rem;
+    }
+    
+    footer .redes_sociales{
+        font-size: 2.5rem;
+    }
+}
 @media screen and (min-width: 500px) {
+    /* Header */
+    header {
+        padding-top: 2rem;
+        margin-bottom: 3rem;
+    }
     /* formulario */
     main form {
         width: 90%;
     }
 
     main form .containerForm .label {
-        width: 20%;
+        font-size: 2rem;
+    }
+
+    main form .containerForm .inputs {
+        font-size: 1.7rem;
+        
+    }
+
+    footer .copy{
+        font-size: 1.7rem;
+    }
+    
+    footer .redes_sociales{
+        font-size: 2.7rem;
     }
 }
 
 @media screen and (min-width: 600px) {
+    /* Header */
+    header .logo {
+        width: 10%;
+        
+    }
+
+    header .title {
+        font-size: 2.8rem;
+    }
+
     /* main */
     main {
         width: 70%;
@@ -198,7 +266,32 @@ footer .redes_sociales .github:hover {
 
 @media screen and (min-width: 700px) {
     /* header */
-    header .logo {
-        width: 15%;
+
+    /* Main */
+    main form .titletwo {
+        font-size: 3rem;
+        padding-bottom: 3rem;
     }
+
+    main form .containerForm .label {
+        font-size: 2rem;
+    }
+
+    main form .containerForm .inputs {
+        font-size: 1.9rem;
+        
+    }
+
+    main form .btn {    
+        font-size: 2.5rem;
+        width: 17rem;
+    }
+
+    footer .copy{
+        font-size: 2rem;
+    }
+    
+    footer .redes_sociales{
+        font-size: 3rem;
+    }   
 }
