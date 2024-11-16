@@ -1,6 +1,6 @@
 /* Header */
 .active {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 /* Cards */
 .row {
@@ -15,7 +15,7 @@
 
 .card {
     width: 100%;
-    height: 30vh;
+    max-height: 300px;
 }
 
 .card-body {
@@ -48,6 +48,9 @@
 }
 
 /* footer */
+footer {
+    margin: auto;
+}
 footer .copy{
     font-size: 25px;
 }
