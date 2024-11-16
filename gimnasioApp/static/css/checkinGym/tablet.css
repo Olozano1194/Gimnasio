@@ -6,22 +6,31 @@ header {
 main {
     margin-top: 0;
     padding-bottom: 2rem;
+    @media (min-width: 1000px) {
+        width: 70%;
+    }
 }
 
 main form .container-request{
     font-size: 2.5rem;
        
 }
+main form .container-request .container-LabelInput .label {
+    font-size: 2.5rem;       
+}
 
-.names, .lastnames, .users, .emails, .rol, .pass, .repeatpass {
-    font-size: 1.8rem;
+.names, .lastnames, .phones, .address, .initDate, .finDate, .prices {
+    font-size: 2rem;
 }
 
 main form .container-btn button[type="submit"]{
     font-size: 2rem;    
 }
-
 /* footer */
 footer .copy{
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+}
+
+footer .redes_sociales{
+    font-size: 3.5rem;
 }

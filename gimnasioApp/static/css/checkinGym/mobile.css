@@ -13,7 +13,7 @@
     background: linear-gradient(rgba(255,255,255,0), rgba(201,214,250,1)); 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,20 +24,19 @@
      width: 100%;
      height: 20vh;
      text-align: center;
-     padding-bottom: 2rem;
+     padding-bottom: 1rem;
  }
  
  header .title {
      text-align: center;
      color: cadetblue;
-     font-size: 5rem;
+     font-size: 4rem;
      padding-top: 2rem;
      padding-bottom: 2rem;
  }
  
  main {
      width: 90%;
-     height: 90vh;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -45,7 +44,7 @@
      background: white;
      border: 0.1rem solid burlywood;
      border-radius: 1rem;
-     margin-top: 2rem;
+     margin-top: .5rem;
  }
  
  main form {
@@ -86,7 +85,7 @@
      
  }
  
- .names, .lastnames, .phones, .address, .initDate, .finDate, .repeatpass, .prices {
+ .names, .lastnames, .phones, .address, .initDate, .finDate, .prices {
      width: 100%;
      border-radius: .5rem;
      border: 0.1rem solid burlywood;
@@ -135,6 +134,7 @@
  }
  
  footer .copy{
+    color: #616061;
      font-size: 1.7rem;
      font-weight: 600;
  }
@@ -189,10 +189,24 @@
     margin-top: .5rem;
 }
  
- @media(min-width: 600px) {
-      /* main */
-      main {
-         width: 70%;
-     }
-     
- }
+@media(min-width: 600px) {
+    /* main */
+    main form .container-request .container-LabelInput .label {
+       width: 60%;               
+   }    
+}
+
+@media (min-width: 700px) {
+    /* main */
+    main {
+       width: 80%;
+   }
+
+    main form .container-request .container-LabelInput .label {
+       font-size: 2rem;               
+   }
+
+   .names, .lastnames, .phones, .address, .initDate, .finDate, .prices {
+       font-size: 1.6rem;        
+   }
+}
